@@ -9,56 +9,62 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Kingfisher
-
+import SideMenu
 class HomeVC: UIViewController {
     var isFirst: Bool = true
     deinit {
         print("Huỷ HomeViewController")
     }
-
+    
     let host = "https://id.mvpapp.vn/"
     var download = ""
- 
+    var menu:SideMenuNavigationController!
+    var avatarMenu:SideMenuNavigationController!
+    var dataname: String!
+    var imageurl:String!
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        let signout = UIBarButtonItem(image: UIImage.init(systemName: "multiply"), style: .done, target: self, action: #selector(signOut))
+        let signout = UIBarButtonItem(image: UIImage.init(systemName: "ellipsis"), style: .done, target: self, action: #selector(Menu))
         navigationItem.leftBarButtonItem = signout
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
-//        let editMenu = UIBarButtonItem(image: UIImage.init(systemName: "line.horizontal.3.decrease"), style: .done, target: self, action: #selector(edit))
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.isTranslucent = true
+//        self.navigationController?.view.backgroundColor = .clear
+//        let editMenu = UIBarButtonItem(image: UIImage.init(systemName: "line.horizontal.3.decrease"), style: .done, target: self, action: #selector(Profile))
 //        navigationItem.rightBarButtonItem = editMenu
-
+        title = " MVP APP - NOTIFICATION"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000),NSAttributedString.Key.font: UIFont(name: "Times New Roman", size: 19)!]
         addSub();setLayout()
         DispatchQueue.main.async {
             self.checkSession()
-
-            
+            self.avatarMenu = SideMenuNavigationController(rootViewController: AvatarVC())
+            self.avatarMenu.menuWidth = self.view.frame.width/2
+            self.menu = SideMenuNavigationController(rootViewController: MenuVC())
+            self.menu?.leftSide = true
+            self.menu.menuWidth = self.view.frame.width/2
         }
-
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
+        
     }
-    @objc func edit(){
-        let editVC = SlideMenuViewController()
-        let navigationController = UINavigationController.init(rootViewController: editVC)
-        navigationController.modalPresentationStyle = .fullScreen
-        self.present(navigationController, animated: true, completion: nil)
-    print("go edit")
+    @objc func Profile1(){
+        
+        present(avatarMenu!, animated: true)
+        print("Profile")
     }
-    @objc func signOut(){
-        UserDefaults.standard.removeObject(forKey: "session_key")
-        let loginVC = LoginVC()
-        let window = UIApplication.shared.windows.first
-        window?.rootViewController = loginVC
-    print("log out")
+    @objc func Menu(){
+        //        UserDefaults.standard.removeObject(forKey: "session_key")
+        //        let loginVC = LoginVC()
+        //        let window = UIApplication.shared.windows.first
+        //        window?.rootViewController = loginVC
+        present(menu!, animated: true)
+        print("MENU")
     }
     func checkSession(){
         let checksession = "https://id.mvpapp.vn/api/v1/system/checkSession"
@@ -70,34 +76,23 @@ class HomeVC: UIViewController {
             switch response.result{
             case .success(let object):
                 let json = JSON(object)
+                print(json)
                 if json["CODE"].stringValue == "SUCCESS"{
                     let data = AppNotification.checkSession(json: json["userData"])
-                    
-                    strongSelf.download = "\(strongSelf.host+(data?.avatar)!)"
-                    DispatchQueue.main.async {
-                        let titleview = UIView()
-                        titleview.frame = CGRect(x: 0, y: 0, width: 320, height: 80)
-                       
-                        let avatar = UIImageView()
-                        avatar.frame = CGRect(x: 275, y: 2, width: 40, height: 40)
-                        avatar.clipsToBounds = true
-                        avatar.contentMode = .scaleAspectFill
-                        avatar.layer.cornerRadius = avatar.frame.height/2
-                        avatar.kf.setImage(with: URL(string: strongSelf.download))
-                        avatar.isUserInteractionEnabled = true
-                        
-                        let recognizer = UITapGestureRecognizer(target: self, action: #selector(HomeVC.edit))
-                        avatar.addGestureRecognizer(recognizer)
-                        let tilename = UILabel()
-                        tilename.text = "\((data?.name)!) - \((data?.username)!)"
-                        tilename.frame = CGRect(x: 0, y: 2, width: 270, height: 40)
-                        tilename.textColor = UIColor(red:0.000, green:0.439, blue:0.973, alpha: 1.000)
-                        tilename.font = UIFont.init(name: "Times New Roman", size: 20)
-                        tilename.textAlignment = .center
-                        titleview.addSubview(avatar)
-                        titleview.addSubview(tilename)
-                        strongSelf.navigationItem.titleView = titleview
-                    }
+                    strongSelf.dataname = (data?.name)!
+                    strongSelf.imageurl = strongSelf.host+(data?.avatar)!
+                    print(strongSelf.imageurl!)
+                    let username = data?.username
+                    let email = data?.email
+                    let phone = data?.phone
+                    UserDefaults.standard.setValue(strongSelf.imageurl, forKey: "avatar")
+                    UserDefaults.standard.setValue(username, forKey: "username")
+                    UserDefaults.standard.setValue(strongSelf.dataname, forKey: "name")
+                    UserDefaults.standard.setValue(email, forKey: "email")
+                    UserDefaults.standard.setValue(phone, forKey: "phone")
+                    let rightMenu = ImageBarButton(withUrl: URL(string: "\(strongSelf.imageurl!)"))
+                    rightMenu.button.addTarget(self, action: #selector(strongSelf.Profile1), for: .touchUpInside)
+                    strongSelf.navigationItem.rightBarButtonItem = rightMenu.load()
                 }
                 if json["CODE"].stringValue == "SESSION_KEY_INVALID"{
                     DispatchQueue.main.async{
@@ -113,11 +108,10 @@ class HomeVC: UIViewController {
         }
     }
     func addSub(){
-      
     }
     func setLayout(){
-      
-        
     }
- 
+    
 }
+
+

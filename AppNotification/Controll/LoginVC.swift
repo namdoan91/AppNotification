@@ -193,9 +193,7 @@ class LoginVC: UIViewController {
             response in
             switch response.result{
             case .success(let value):
-                let json = JSON(value)
-                print(json)
-               
+                let json = JSON(value)               
                 if json["CODE"].stringValue == "SESSION_KEY_INVALID"{
                     self.showAlert(alertText: "Lỗi????", alertMessage: "Mật Khẫu Không Đúng Hoặc Đã Bị Thay Đổi")
                 }

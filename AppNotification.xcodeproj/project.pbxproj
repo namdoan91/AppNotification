@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08414C0E257A13AA004EE5AA /* ChangePassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08414C0D257A13AA004EE5AA /* ChangePassVC.swift */; };
+		08414C0E257A13AA004EE5AA /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08414C0D257A13AA004EE5AA /* ProfileVC.swift */; };
 		0847688D257BA855004D5680 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0847688C257BA855004D5680 /* SlideMenuController.swift */; };
-		08476890257BA957004D5680 /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0847688F257BA957004D5680 /* SlideMenuViewController.swift */; };
+		08476890257BA957004D5680 /* AvatarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0847688F257BA957004D5680 /* AvatarVC.swift */; };
 		085423D625789F3B00B45DF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085423D525789F3B00B45DF1 /* AppDelegate.swift */; };
 		085423D825789F3B00B45DF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085423D725789F3B00B45DF1 /* SceneDelegate.swift */; };
 		085423DF25789F3C00B45DF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 085423DE25789F3C00B45DF1 /* Assets.xcassets */; };
@@ -21,14 +21,17 @@
 		0854241A2578C45200B45DF1 /* API Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085424192578C45200B45DF1 /* API Manager.swift */; };
 		0854241D2578C5BF00B45DF1 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0854241C2578C5BF00B45DF1 /* UserData.swift */; };
 		085424202578C73400B45DF1 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0854241F2578C73400B45DF1 /* HomeVC.swift */; };
+		088A2C3D257DBA3900FB3EE3 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A2C3C257DBA3900FB3EE3 /* MenuVC.swift */; };
+		088A2C46257DD5CC00FB3EE3 /* UIBarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A2C45257DD5CC00FB3EE3 /* UIBarImageView.swift */; };
+		088A2C50257E299300FB3EE3 /* ChangPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */; };
 		089751D72579258D00F5CD4D /* checkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089751D62579258D00F5CD4D /* checkSession.swift */; };
 		68B53ECD2171CE89D5C59505 /* Pods_AppNotification.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B8A9DF71CB4B249EC2D7BD /* Pods_AppNotification.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		08414C0D257A13AA004EE5AA /* ChangePassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassVC.swift; sourceTree = "<group>"; };
+		08414C0D257A13AA004EE5AA /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		0847688C257BA855004D5680 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
-		0847688F257BA957004D5680 /* SlideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
+		0847688F257BA957004D5680 /* AvatarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarVC.swift; sourceTree = "<group>"; };
 		085423D225789F3B00B45DF1 /* AppNotification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppNotification.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		085423D525789F3B00B45DF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		085423D725789F3B00B45DF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +45,9 @@
 		085424192578C45200B45DF1 /* API Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Manager.swift"; sourceTree = "<group>"; };
 		0854241C2578C5BF00B45DF1 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		0854241F2578C73400B45DF1 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		088A2C3C257DBA3900FB3EE3 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
+		088A2C45257DD5CC00FB3EE3 /* UIBarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarImageView.swift; sourceTree = "<group>"; };
+		088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangPassVC.swift; sourceTree = "<group>"; };
 		089751D62579258D00F5CD4D /* checkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkSession.swift; sourceTree = "<group>"; };
 		132E53CFF298E8A3B041C2CD /* Pods-AppNotification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppNotification.release.xcconfig"; path = "Target Support Files/Pods-AppNotification/Pods-AppNotification.release.xcconfig"; sourceTree = "<group>"; };
 		2E944568B727FE57801F9FF9 /* Pods-AppNotification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppNotification.debug.xcconfig"; path = "Target Support Files/Pods-AppNotification/Pods-AppNotification.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,10 +130,12 @@
 		085423EC25789F4E00B45DF1 /* Controll */ = {
 			isa = PBXGroup;
 			children = (
-				0847688F257BA957004D5680 /* SlideMenuViewController.swift */,
+				0847688F257BA957004D5680 /* AvatarVC.swift */,
+				088A2C3C257DBA3900FB3EE3 /* MenuVC.swift */,
 				085423ED2578A02500B45DF1 /* LoginVC.swift */,
 				0854241F2578C73400B45DF1 /* HomeVC.swift */,
-				08414C0D257A13AA004EE5AA /* ChangePassVC.swift */,
+				08414C0D257A13AA004EE5AA /* ProfileVC.swift */,
+				088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */,
 			);
 			path = Controll;
 			sourceTree = "<group>";
@@ -137,6 +145,7 @@
 			children = (
 				085423FB2578A15600B45DF1 /* Extension + UIImage.swift */,
 				085424082578BFCE00B45DF1 /* UIAlert.swift */,
+				088A2C45257DD5CC00FB3EE3 /* UIBarImageView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -280,16 +289,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				085424202578C73400B45DF1 /* HomeVC.swift in Sources */,
-				08476890257BA957004D5680 /* SlideMenuViewController.swift in Sources */,
+				08476890257BA957004D5680 /* AvatarVC.swift in Sources */,
 				089751D72579258D00F5CD4D /* checkSession.swift in Sources */,
+				088A2C3D257DBA3900FB3EE3 /* MenuVC.swift in Sources */,
 				0854241A2578C45200B45DF1 /* API Manager.swift in Sources */,
-				08414C0E257A13AA004EE5AA /* ChangePassVC.swift in Sources */,
+				08414C0E257A13AA004EE5AA /* ProfileVC.swift in Sources */,
 				085424062578B5E200B45DF1 /* Colors.swift in Sources */,
 				0854241D2578C5BF00B45DF1 /* UserData.swift in Sources */,
+				088A2C46257DD5CC00FB3EE3 /* UIBarImageView.swift in Sources */,
 				085423D625789F3B00B45DF1 /* AppDelegate.swift in Sources */,
 				085423FC2578A15600B45DF1 /* Extension + UIImage.swift in Sources */,
 				085423EE2578A02500B45DF1 /* LoginVC.swift in Sources */,
 				085424092578BFCE00B45DF1 /* UIAlert.swift in Sources */,
+				088A2C50257E299300FB3EE3 /* ChangPassVC.swift in Sources */,
 				0847688D257BA855004D5680 /* SlideMenuController.swift in Sources */,
 				085423D825789F3B00B45DF1 /* SceneDelegate.swift in Sources */,
 			);

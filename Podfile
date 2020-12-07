@@ -10,6 +10,7 @@ target 'AppNotification' do
 	pod 'SwiftyJSON'
 	pod 'TextFieldEffects'
 	pod 'SideMenuSwift'
+	pod 'SideMenu'
 	pod 'Kingfisher'
 	pod 'SwiftEntryKit'
 	pod 'SkyFloatingLabelTextField'
