@@ -7,6 +7,10 @@
 
 import UIKit
 import SafariServices
+import JXWebViewController
+import WebKit
+
+
 class MenuVC: UITableViewController, SFSafariViewControllerDelegate {
 var items = ["test", "demo"]
     override func viewDidLoad() {
@@ -32,10 +36,14 @@ var items = ["test", "demo"]
      }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if items[indexPath.row] == "test"{
-            let url = "https://tangca.mvpapp.vn/admin/tangca/thongketoancongty"
-            let vc = SFSafariViewController(url: URL(string: "\(url)")!)
-            vc.delegate = self
-            present(vc, animated: true)
+            let url = URL(string: "https://tangca.mvpapp.vn/admin/tangca/thongketoancongty")!
+//            let vc = SFSafariViewController(url: URL(string: "\(url)")!)
+//            vc.delegate = self
+//            let vc = JXWebViewController()
+            let vc = 
+            vc.webView.load(URLRequest(url: url))
+            
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

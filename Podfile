@@ -9,6 +9,7 @@ target 'AppNotification' do
 	pod 'Alamofire'
 	pod 'SwiftyJSON'
 	pod 'TextFieldEffects'
+	pod 'JXWebViewController'
 	pod 'SideMenuSwift'
 	pod 'SideMenu'
 	pod 'Kingfisher'

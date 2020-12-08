@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-AppNotification/Pods-AppNotification-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/JXWebViewController/JXWebViewController.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/QuickLayout/QuickLayout.framework
 ${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework

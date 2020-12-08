@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 class AvatarVC: UITableViewController {
     var selectName:String!
@@ -56,12 +57,24 @@ class AvatarVC: UITableViewController {
             UserDefaults.standard.removeObject(forKey: "name")
             UserDefaults.standard.removeObject(forKey: "email")
             UserDefaults.standard.removeObject(forKey: "phone")
+//            URLCache.shared.removeAllCachedResponses()
+//            URLCache.shared.diskCapacity = 0
+//            URLCache.shared.memoryCapacity = 0
+//            let dataStore = WKWebsiteDataStore.default()
+//            dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { (records) in
+//                for record in records {
+//                    if record.displayName.contains("mvpapp.com"){
+//                        WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record]) {
+//                            print("Clear sussce \(record)")
+//                        }
+//                    }
+//                }
+//            }
             let loginVC = LoginVC()
             let window = UIApplication.shared.windows.first
             window?.rootViewController = loginVC
+            
         }
-//
 
-//
     }
 }
