@@ -9,8 +9,11 @@ import UIKit
 import Kingfisher
 import SwiftyJSON
 import SkyFloatingLabelTextField
+import SafariServices
 
-class ProfileVC: UIViewController {
+import WebKit
+
+class ProfileVC: UIViewController, WKNavigationDelegate , SFSafariViewControllerDelegate{
     let containerview: UIView = {
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
@@ -130,24 +133,39 @@ class ProfileVC: UIViewController {
         register.setTitleColor(.white, for: .normal)
         return register
     }()
+    let logOut: UIButton = {
+        let register = UIButton()
+        register.translatesAutoresizingMaskIntoConstraints = false
+        register.setTitle("Đăng Xuất", for: .normal)
+        register.backgroundColor = UIColor(red:0.384, green:0.431, blue:0.831, alpha: 1.000)
+        register.layer.cornerRadius = 10
+        register.titleLabel?.font = UIFont.init(name: "Times New Roman", size: 19)
+        register.setTitleColor(.white, for: .normal)
+        return register
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        let back = UIBarButtonItem(image: UIImage.init(systemName: "chevron.left"), style: .done, target: self, action: #selector(quaylai))
-        navigationItem.leftBarButtonItem = back
+//        let back = UIBarButtonItem(image: UIImage.init(systemName: "chevron.left"), style: .done, target: self, action: #selector(quaylai))
+//        navigationItem.leftBarButtonItem = back
         title = "Thông Tin Tài Khoản"
+        navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController!.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000),NSAttributedString.Key.font: UIFont(name: "Times New Roman", size: 19)!]
         addsub(); setLayout()
         DispatchQueue.main.async {
             self.addProfile()
             self.addTarget()
+            self.title = "Thông Tin Tài Khoản"
         }
     }
-    @objc func quaylai(){
-        dismiss(animated: true, completion: nil)
-    }
+//    @objc func quaylai(){
+//        dismiss(animated: true, completion: nil)
+//    }
     func addProfile(){
         let urllogo = UserDefaults.standard.string(forKey: "avatar")
+        logoAvatar.kf.indicatorType = .activity
         logoAvatar.kf.setImage(with: URL(string: urllogo!))
         let username = UserDefaults.standard.string(forKey: "username")
         titleUserName.text = "\(username!)"
@@ -170,6 +188,7 @@ class ProfileVC: UIViewController {
     }
     func addTarget(){
         changePasword.addTarget(self, action: #selector(changPass), for: .touchUpInside)
+        logOut.addTarget(self, action: #selector(logOUT), for: .touchUpInside)
     }
     func addsub(){
         view.addSubview(containerview)
@@ -184,13 +203,14 @@ class ProfileVC: UIViewController {
         stackview.addSubview(sodienThoai)
         stackview.addSubview(titlePhone)
         stackview.addSubview(changePasword)
+        stackview.addSubview(logOut)
         
     }
     func setLayout(){
         containerview.topAnchor.constraint(equalTo:view.layoutMarginsGuide.topAnchor, constant: 0).isActive = true
         containerview.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         containerview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        containerview.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        containerview.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: 0).isActive = true
         
         stackview.topAnchor.constraint(equalTo: containerview.topAnchor, constant:  20).isActive = true
         stackview.leadingAnchor.constraint(equalTo: containerview.leadingAnchor, constant: 20).isActive = true
@@ -235,10 +255,18 @@ class ProfileVC: UIViewController {
         titlePhone.trailingAnchor.constraint(equalTo: stackview.trailingAnchor, constant: -20).isActive = true
         
         changePasword.topAnchor.constraint(equalTo:titlePhone.bottomAnchor, constant: 30).isActive = true
-        changePasword.widthAnchor.constraint(equalToConstant: 180).isActive = true
+        changePasword.widthAnchor.constraint(equalToConstant: 150).isActive = true
         changePasword.heightAnchor.constraint(equalTo: titlePhone.heightAnchor, constant: 0).isActive = true
-        changePasword.centerXAnchor.constraint(equalTo: stackview.centerXAnchor, constant: 0).isActive = true
+        changePasword.leadingAnchor.constraint(equalTo: stackview.leadingAnchor, constant: 20).isActive = true
         
+        logOut.topAnchor.constraint(equalTo:titlePhone.bottomAnchor, constant: 30).isActive = true
+        logOut.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        logOut.heightAnchor.constraint(equalTo: titlePhone.heightAnchor, constant: 0).isActive = true
+        logOut.trailingAnchor.constraint(equalTo: stackview.trailingAnchor, constant: -20).isActive = true
+        
+    }
+    func safariViewControllerDidFinish(controller: SFSafariViewController) {
+        controller.dismiss(animated: true, completion: nil)
     }
     @objc func changPass(){
         let changPassVC = ChangPassVC()
@@ -246,5 +274,27 @@ class ProfileVC: UIViewController {
         navigationController.modalPresentationStyle = .fullScreen
         self.present(navigationController, animated: true, completion: nil)
     print("go edit")
+    }
+    @objc func logOUT(){
+        UserDefaults.standard.removeObject(forKey: "session_key")
+        UserDefaults.standard.removeObject(forKey: "avatar")
+        UserDefaults.standard.removeObject(forKey: "username")
+        UserDefaults.standard.removeObject(forKey: "name")
+        UserDefaults.standard.removeObject(forKey: "email")
+        UserDefaults.standard.removeObject(forKey: "phone")
+        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+        print("[WebCacheCleaner] All cookies deleted")
+        WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+            records.forEach { record in
+                WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
+                print("[WebCacheCleaner] Record \(record) deleted")
+            }
+        }
+       
+       
+        let loginVC = LoginVC()
+        let window = UIApplication.shared.windows.first
+        window?.rootViewController = loginVC
+        print("đã đăng xuất")
     }
 }

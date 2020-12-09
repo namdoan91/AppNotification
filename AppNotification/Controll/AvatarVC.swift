@@ -57,23 +57,20 @@ class AvatarVC: UITableViewController {
             UserDefaults.standard.removeObject(forKey: "name")
             UserDefaults.standard.removeObject(forKey: "email")
             UserDefaults.standard.removeObject(forKey: "phone")
-//            URLCache.shared.removeAllCachedResponses()
-//            URLCache.shared.diskCapacity = 0
-//            URLCache.shared.memoryCapacity = 0
-//            let dataStore = WKWebsiteDataStore.default()
-//            dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { (records) in
-//                for record in records {
-//                    if record.displayName.contains("mvpapp.com"){
-//                        WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record]) {
-//                            print("Clear sussce \(record)")
-//                        }
-//                    }
-//                }
-//            }
+            HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+            print("[WebCacheCleaner] All cookies deleted")
+            
+            WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+                records.forEach { record in
+                    WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
+                    print("[WebCacheCleaner] Record \(record) deleted")
+                }
+            }
+        
             let loginVC = LoginVC()
             let window = UIApplication.shared.windows.first
             window?.rootViewController = loginVC
-            
+            print("đã đăng xuất")
         }
 
     }
