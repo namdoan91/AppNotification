@@ -19,17 +19,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
      
 //        let tabBC = UITabBarController()
         let loginVC = setupController()
-//        let sessionKey = UserDefaults.standard.string(forKey: "session_key") ?? ""
-//
-//        if !sessionKey.isEmpty{
-////            window?.rootViewController = navigationController
-//            window?.rootViewController = loginVC
-//        }else{
-//            window?.rootViewController = LoginVC()
-//        }
-//        window?.makeKeyAndVisible()
-        window?.rootViewController = loginVC
+        let sessionKey = UserDefaults.standard.string(forKey: "session_key") ?? ""
+
+        if !sessionKey.isEmpty{
+//            window?.rootViewController = navigationController
+            window?.rootViewController = loginVC
+        }else{
+            window?.rootViewController = LoginVC()
+        }
         window?.makeKeyAndVisible()
+//        window?.rootViewController = loginVC
+//        window?.makeKeyAndVisible()
     }
     
     func setupController() ->UITabBarController{

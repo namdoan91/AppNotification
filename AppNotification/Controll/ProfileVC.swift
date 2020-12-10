@@ -28,7 +28,6 @@ class ProfileVC: UIViewController, WKNavigationDelegate , SFSafariViewController
         stackview.layer.cornerRadius = 20
         stackview.clipsToBounds = true
         stackview.backgroundColor = UIColor(red:0.733, green:0.733, blue:0.733, alpha: 1.000).withAlphaComponent(0.5)
-
         return stackview
     }()
     let logoAvatar: UIImageView = {
@@ -143,48 +142,35 @@ class ProfileVC: UIViewController, WKNavigationDelegate , SFSafariViewController
         register.setTitleColor(.white, for: .normal)
         return register
     }()
+    var profileAvatar: checkSession?
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
 //        let back = UIBarButtonItem(image: UIImage.init(systemName: "chevron.left"), style: .done, target: self, action: #selector(quaylai))
 //        navigationItem.leftBarButtonItem = back
         title = "Thông Tin Tài Khoản"
-        navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController!.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000),NSAttributedString.Key.font: UIFont(name: "Times New Roman", size: 19)!]
         addsub(); setLayout()
         DispatchQueue.main.async {
-            self.addProfile()
+            self.addProfile(self.profileAvatar)
             self.addTarget()
             self.title = "Thông Tin Tài Khoản"
         }
     }
-//    @objc func quaylai(){
-//        dismiss(animated: true, completion: nil)
-//    }
-    func addProfile(){
-        let urllogo = UserDefaults.standard.string(forKey: "avatar")
-        logoAvatar.kf.indicatorType = .activity
-        logoAvatar.kf.setImage(with: URL(string: urllogo!))
-        let username = UserDefaults.standard.string(forKey: "username")
-        titleUserName.text = "\(username!)"
-        
-        let textnhanvien = UserDefaults.standard.string(forKey: "name")
-        titleName.text = "\(textnhanvien!)"
-        if UserDefaults.standard.string(forKey: "email") == nil{
+    func addProfile(_ data: checkSession?){
+//        logoAvatar.setImage(urlString: (data?.avatar)!)
+        titleUserName.text = data?.name
+        titleName.text = data?.username
+        if data?.email == nil{
             titleEmail.text = "Chưa câp nhật thông tin"
         }else {
-            let textEmail = UserDefaults.standard.string(forKey: "email")
-            titleEmail.text = "\(textEmail!)"
+            titleEmail.text = data?.email
         }
-        if UserDefaults.standard.string(forKey: "phone") == nil{
+        if data?.phone == nil{
             titlePhone.text = "Chưa câp nhật thông tin"
         }else {
-            let textPhone = UserDefaults.standard.string(forKey: "phone")
-            titlePhone.text = "\(textPhone!)"
+            titlePhone.text = data?.phone
         }
-        
     }
     func addTarget(){
         changePasword.addTarget(self, action: #selector(changPass), for: .touchUpInside)
@@ -265,23 +251,15 @@ class ProfileVC: UIViewController, WKNavigationDelegate , SFSafariViewController
         logOut.trailingAnchor.constraint(equalTo: stackview.trailingAnchor, constant: -20).isActive = true
         
     }
-    func safariViewControllerDidFinish(controller: SFSafariViewController) {
-        controller.dismiss(animated: true, completion: nil)
-    }
     @objc func changPass(){
         let changPassVC = ChangPassVC()
-        let navigationController = UINavigationController.init(rootViewController: changPassVC)
-        navigationController.modalPresentationStyle = .fullScreen
-        self.present(navigationController, animated: true, completion: nil)
+//        let navigation = UINavigationController(rootViewController: changPassVC)
+//        navigation.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(changPassVC, animated: true)
     print("go edit")
     }
     @objc func logOUT(){
         UserDefaults.standard.removeObject(forKey: "session_key")
-        UserDefaults.standard.removeObject(forKey: "avatar")
-        UserDefaults.standard.removeObject(forKey: "username")
-        UserDefaults.standard.removeObject(forKey: "name")
-        UserDefaults.standard.removeObject(forKey: "email")
-        UserDefaults.standard.removeObject(forKey: "phone")
         HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
         print("[WebCacheCleaner] All cookies deleted")
         WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
@@ -290,8 +268,6 @@ class ProfileVC: UIViewController, WKNavigationDelegate , SFSafariViewController
                 print("[WebCacheCleaner] Record \(record) deleted")
             }
         }
-       
-       
         let loginVC = LoginVC()
         let window = UIApplication.shared.windows.first
         window?.rootViewController = loginVC

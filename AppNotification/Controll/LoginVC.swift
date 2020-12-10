@@ -102,10 +102,12 @@ class LoginVC: UIViewController {
         return stackview
     }()
     let margin:CGFloat = 15
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor?.color(UIColor())
         addSubView(); setLayout(); layer(); addTap()
+
         
     }
     func addTap(){
@@ -185,6 +187,7 @@ class LoginVC: UIViewController {
         }
         print("da tap")
         Login(dangnhap, matkhau)
+   
     }
     func Login(_ DangNhap: String,_ MatKhau: String){
        let apiURL = "https://id.mvpapp.vn/api/v1/system/Login"
@@ -193,18 +196,28 @@ class LoginVC: UIViewController {
             response in
             switch response.result{
             case .success(let value):
-                let json = JSON(value)               
+                let json = JSON(value)
+
+                
                 if json["CODE"].stringValue == "SESSION_KEY_INVALID"{
                     self.showAlert(alertText: "Lỗi????", alertMessage: "Mật Khẫu Không Đúng Hoặc Đã Bị Thay Đổi")
                 }
                 if json["CODE"].stringValue == "SUCCESS" && !json["session_key"].stringValue.isEmpty{
                     let sessionKey = json["session_key"].stringValue
                         UserDefaults.standard.setValue(sessionKey, forKey: "session_key")
-                        let homeVC = HomeVC()
-                        let navigationController = UINavigationController.init(rootViewController: homeVC)
-                        navigationController.modalPresentationStyle = .fullScreen
-                        self.present(navigationController, animated: true)
-                    print(sessionKey)
+                    
+                    let tabBC = UITabBarController()
+                    
+                    let homeVC = UINavigationController(rootViewController: HomeVC())
+                    homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
+                    
+                    let profile = UINavigationController(rootViewController: ProfileVC())
+                    profile.tabBarItem = UITabBarItem(title: "Thông Tin Tài Khoản", image: UIImage(systemName: "person.3"), tag: 1)
+                    
+                    tabBC.setViewControllers([homeVC, profile], animated: true)
+                    tabBC.modalPresentationStyle = .overFullScreen
+                    self.present(tabBC, animated: true)
+              
                 }
                 if json["CODE"].stringValue == "LOGIN_FAILED"{
                     self.showAlert(alertText: "--**Lỗi**--", alertMessage: "Mật Khẩu Không Đúng")
