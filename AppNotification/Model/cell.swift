@@ -24,7 +24,6 @@ class cell: UITableViewCell {
         titleNewLabel.textAlignment = .left
         return titleNewLabel
     }()
-    
     let contentLabel: UILabel = {
         let contentLabel = UILabel()
         contentLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -52,11 +51,9 @@ class cell: UITableViewCell {
         avatarTitle.backgroundColor = UIColor(red:0.973, green:0.973, blue:0.980, alpha: 1.000)
         return avatarTitle
     }()
-
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         addSub()
@@ -65,10 +62,9 @@ class cell: UITableViewCell {
         containerView.layer.shadowOffset = CGSize(width: 0, height: 8)
         containerView.layer.shadowOpacity = 0.5
         containerView.layer.shadowRadius = 5
-        containerView.layer.shadowColor = UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000).cgColor
-        
+//        containerView.layer.shadowColor = UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000).cgColor
+        containerView.layer.shadowColor = UIColor.blue.withAlphaComponent(0.5).cgColor
     }
-    
     func addSub(){
         self.addSubview(containerView)
         containerView.addSubview(titleNewLabel)
@@ -76,7 +72,6 @@ class cell: UITableViewCell {
         containerView.addSubview(timerLabel)
         containerView.addSubview(titleNewLabel)
         containerView.addSubview(avatarTitle)
-        
     }
     func setLayout(){
         containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true

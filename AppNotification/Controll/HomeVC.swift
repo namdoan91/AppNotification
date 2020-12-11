@@ -36,17 +36,10 @@ class HomeVC: UITableViewController, WKNavigationDelegate, SFSafariViewControlle
         navigationItem.title = "MVP APP - NOTIFICATION"
         tableView.register(cell.self, forCellReuseIdentifier: "cell")
         tableView.backgroundColor = UIColor(red:0.165, green:0.192, blue:0.259, alpha: 1.000).withAlphaComponent(0.5)
-        
         DispatchQueue.main.async {
             self.checkSession()
             self.getNotify()
-           
         }
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-//        self.getNotify()
-//        self.tableView.reloadData()
     }
     func checkSession(){
         ApiManager.shared.checkSession { [weak self] (_ data) in
@@ -54,11 +47,7 @@ class HomeVC: UITableViewController, WKNavigationDelegate, SFSafariViewControlle
             strongSelf.checkSeSSion = data
             strongSelf.imageurl = APINameManager.shared.avatar + strongSelf.checkSeSSion.avatar!
             let rightMenu = ImageBarButton(withUrl: URL(string: "\(strongSelf.imageurl!)"))
-            let editProfile = ProfileVC()
-            editProfile.profileAvatar = strongSelf.checkSeSSion
             strongSelf.navigationItem.rightBarButtonItem = rightMenu.load()
-
-            
         }failure: { (code) in
             self.showAlert(alertText: code, alertMessage: "Thông Tin Đăng Nhập Lỗi.")
             print(code)
@@ -85,8 +74,7 @@ class HomeVC: UITableViewController, WKNavigationDelegate, SFSafariViewControlle
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell" , for: indexPath) as! cell
         cell.titleNewLabel.text = content[indexPath.row]
         cell.titleNewLabel.textColor = .black
-        cell.backgroundColor = UIColor(red:0.165, green:0.192, blue:0.259, alpha: 1.000)
-//        cell.detailTextLabel =
+        cell.backgroundColor = UIColor.lightGray
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

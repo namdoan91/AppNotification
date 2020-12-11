@@ -14,6 +14,9 @@ import SafariServices
 import WebKit
 
 class ProfileVC: UIViewController, WKNavigationDelegate , SFSafariViewControllerDelegate{
+    deinit {
+        print("Huỷ ProfileViewController")
+    }
     let containerview: UIView = {
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
@@ -142,34 +145,30 @@ class ProfileVC: UIViewController, WKNavigationDelegate , SFSafariViewController
         register.setTitleColor(.white, for: .normal)
         return register
     }()
-    var profileAvatar: checkSession?
+    var dataProfile: checkSession!
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-//        let back = UIBarButtonItem(image: UIImage.init(systemName: "chevron.left"), style: .done, target: self, action: #selector(quaylai))
-//        navigationItem.leftBarButtonItem = back
         title = "Thông Tin Tài Khoản"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000),NSAttributedString.Key.font: UIFont(name: "Times New Roman", size: 19)!]
         addsub(); setLayout()
         DispatchQueue.main.async {
-            self.addProfile(self.profileAvatar)
             self.addTarget()
             self.title = "Thông Tin Tài Khoản"
+            self.checkSession()
         }
     }
-    func addProfile(_ data: checkSession?){
-//        logoAvatar.setImage(urlString: (data?.avatar)!)
-        titleUserName.text = data?.name
-        titleName.text = data?.username
-        if data?.email == nil{
-            titleEmail.text = "Chưa câp nhật thông tin"
-        }else {
-            titleEmail.text = data?.email
-        }
-        if data?.phone == nil{
-            titlePhone.text = "Chưa câp nhật thông tin"
-        }else {
-            titlePhone.text = data?.phone
+    func checkSession(){
+        ApiManager.shared.checkSession { [weak self] (_ data) in
+            guard let strongSelf = self else {return}
+            strongSelf.dataProfile = data
+            strongSelf.titleEmail.text = strongSelf.dataProfile.email
+            strongSelf.logoAvatar.setImage(urlString: strongSelf.dataProfile.avatar!)
+            strongSelf.titleName.text = strongSelf.dataProfile.username
+            strongSelf.titleUserName.text = strongSelf.dataProfile.name
+        }failure: { (code) in
+            self.showAlert(alertText: code, alertMessage: "Thông Tin Đăng Nhập Lỗi.")
+            print(code)
         }
     }
     func addTarget(){
