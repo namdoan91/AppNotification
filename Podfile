@@ -8,7 +8,11 @@ target 'AppNotification' do
   # Pods for AppNotification
 	pod 'Alamofire'
 	pod 'SwiftyJSON'
+	pod 'SkeletonView'
 	pod 'TextFieldEffects'
+	pod 'SKActivityIndicatorView'
+	pod 'NVActivityIndicatorView'
+	pod 'ActivityIndicatorView'
 	pod 'JXWebViewController'
 	pod 'SideMenuSwift'
 	pod 'SideMenu'

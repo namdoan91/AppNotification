@@ -23,6 +23,7 @@ extension ApiManager{
             switch response.result{
             case .success(let value):
                 let json = JSON(value)
+                print(json)
                 let code = json["CODE"].stringValue
                 if code == "SUCCESS"{
                     for item in json["notification"].arrayValue{

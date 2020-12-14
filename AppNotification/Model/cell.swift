@@ -19,15 +19,15 @@ class cell: UITableViewCell {
     let titleNewLabel: UILabel = {
         let titleNewLabel = UILabel()
         titleNewLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleNewLabel.textColor = UIColor.blue
-        titleNewLabel.font = UIFont.init(name: "Times New Roman", size: 16)
+        titleNewLabel.textColor = UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000)
+        titleNewLabel.font = UIFont.init(name: "Times New Roman", size: 18)
         titleNewLabel.textAlignment = .left
         return titleNewLabel
     }()
     let contentLabel: UILabel = {
         let contentLabel = UILabel()
         contentLabel.translatesAutoresizingMaskIntoConstraints = false
-        contentLabel.font = UIFont.init(name: "Times New Roman", size: 12)
+        contentLabel.font = UIFont.init(name: "Times New Roman", size: 14)
         contentLabel.textColor = UIColor.black
         contentLabel.numberOfLines = 0
         return contentLabel
@@ -38,17 +38,25 @@ class cell: UITableViewCell {
         titleNewLabel.textColor = UIColor.blue
         titleNewLabel.font = UIFont.boldSystemFont(ofSize: 10)
         titleNewLabel.textColor = UIColor(red:0.275, green:0.282, blue:0.298, alpha: 1.000)
-        titleNewLabel.textAlignment = .right
+        titleNewLabel.textAlignment = .left
         return titleNewLabel
     }()
+    let imageview: UIView = {
+        let imageView = UIView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageView.clipsToBounds = true
+        imageView.backgroundColor = .red
+        return imageView
+    }()
     let avatarTitle: UIImageView = {
-        let avatarTitle = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        let avatarTitle = UIImageView()
         avatarTitle.translatesAutoresizingMaskIntoConstraints = false
         avatarTitle.image = UIImage(named: "") ?? UIImage()
-        avatarTitle.layer.cornerRadius = avatarTitle.frame.height/2
-        avatarTitle.contentMode = .scaleToFill
+        avatarTitle.layer.cornerRadius = avatarTitle.frame.size.height/2
+        avatarTitle.contentMode = .scaleAspectFit
         avatarTitle.clipsToBounds = true
         avatarTitle.backgroundColor = UIColor(red:0.973, green:0.973, blue:0.980, alpha: 1.000)
+        avatarTitle.layer.masksToBounds = true
         return avatarTitle
     }()
     override func awakeFromNib() {
@@ -58,12 +66,13 @@ class cell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         addSub()
         setLayout()
-        containerView.layer.masksToBounds = false
-        containerView.layer.shadowOffset = CGSize(width: 0, height: 8)
-        containerView.layer.shadowOpacity = 0.5
-        containerView.layer.shadowRadius = 5
+//        containerView.layer.masksToBounds = false
+//        containerView.layer.shadowOffset = CGSize(width: 0, height: 8)
+//        containerView.layer.shadowOpacity = 0.5
+//        containerView.layer.shadowRadius = 5
 //        containerView.layer.shadowColor = UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000).cgColor
         containerView.layer.shadowColor = UIColor.blue.withAlphaComponent(0.5).cgColor
+
     }
     func addSub(){
         self.addSubview(containerView)
@@ -71,13 +80,14 @@ class cell: UITableViewCell {
         containerView.addSubview(contentLabel)
         containerView.addSubview(timerLabel)
         containerView.addSubview(titleNewLabel)
-        containerView.addSubview(avatarTitle)
+        containerView.addSubview(imageview)
+        imageview.addSubview(avatarTitle)
     }
     func setLayout(){
-        containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
+        containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
         containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
         
         titleNewLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 5).isActive = true
         titleNewLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5).isActive = true
@@ -90,11 +100,17 @@ class cell: UITableViewCell {
         contentLabel.heightAnchor.constraint(equalTo: containerView.heightAnchor,multiplier: 0.4, constant: 0).isActive = true
         
         timerLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor,constant: -5).isActive  = true
-        timerLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -25).isActive = true
-        timerLabel.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.5, constant: 0).isActive = true
+        timerLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5).isActive = true
+        timerLabel.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.7, constant: 0).isActive = true
         timerLabel.heightAnchor.constraint(equalTo: containerView.heightAnchor,multiplier: 0.2, constant: 0).isActive = true
-               
-        avatarTitle.centerXAnchor.constraint(equalTo: containerView.centerXAnchor, constant: -120).isActive = true
-        avatarTitle.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
+         
+        imageview.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20).isActive = true
+        imageview.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive = true
+        imageview.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 0).isActive = true
+        imageview.widthAnchor.constraint(equalToConstant: containerView.bounds.width/3).isActive = true
+        imageview.heightAnchor.constraint(equalTo: containerView.heightAnchor, constant: 0).isActive = true
+        
+        avatarTitle.centerXAnchor.constraint(equalTo: imageview.centerXAnchor, constant: 0).isActive = true
+        avatarTitle.centerYAnchor.constraint(equalTo: imageview.centerYAnchor, constant: 0).isActive = true
     }
 }

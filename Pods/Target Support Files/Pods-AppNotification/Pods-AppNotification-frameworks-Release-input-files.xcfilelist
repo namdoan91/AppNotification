@@ -1,10 +1,14 @@
 ${PODS_ROOT}/Target Support Files/Pods-AppNotification/Pods-AppNotification-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ActivityIndicatorView/ActivityIndicatorView.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/JXWebViewController/JXWebViewController.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
+${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework
 ${BUILT_PRODUCTS_DIR}/QuickLayout/QuickLayout.framework
+${BUILT_PRODUCTS_DIR}/SKActivityIndicatorView/SKActivityIndicatorView.framework
 ${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework
 ${BUILT_PRODUCTS_DIR}/SideMenuSwift/SideMenuSwift.framework
+${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework
 ${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework
 ${BUILT_PRODUCTS_DIR}/SwiftEntryKit/SwiftEntryKit.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
