@@ -131,7 +131,7 @@ class ProfileVC: UIViewController, WKNavigationDelegate , SFSafariViewController
         register.setTitle("Change Pasword", for: .normal)
         register.backgroundColor = UIColor(red:0.384, green:0.431, blue:0.831, alpha: 1.000)
         register.layer.cornerRadius = 10
-        register.titleLabel?.font = UIFont.init(name: "Times New Roman", size: 19)
+        register.titleLabel?.font = UIFont.init(name: "Arial", size: 19)
         register.setTitleColor(.white, for: .normal)
         return register
     }()
@@ -141,7 +141,7 @@ class ProfileVC: UIViewController, WKNavigationDelegate , SFSafariViewController
         register.setTitle("Đăng Xuất", for: .normal)
         register.backgroundColor = UIColor(red:0.384, green:0.431, blue:0.831, alpha: 1.000)
         register.layer.cornerRadius = 10
-        register.titleLabel?.font = UIFont.init(name: "Times New Roman", size: 19)
+        register.titleLabel?.font = UIFont.init(name: "Arial", size: 19)
         register.setTitleColor(.white, for: .normal)
         return register
     }()
@@ -149,12 +149,19 @@ class ProfileVC: UIViewController, WKNavigationDelegate , SFSafariViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = "Thông Tin Tài Khoản"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000),NSAttributedString.Key.font: UIFont(name: "Times New Roman", size: 19)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000),NSAttributedString.Key.font: UIFont(name: "Arial", size: 19)!]
+//
+//        navigationItem.title = "Tài Khoản"
+        let longTitleLabel = UILabel()
+            longTitleLabel.text = "Tài Khoản"
+        longTitleLabel.font = UIFont.boldSystemFont(ofSize: 30)
+            longTitleLabel.sizeToFit()
+
+            let leftItem = UIBarButtonItem(customView: longTitleLabel)
+            self.navigationItem.leftBarButtonItem = leftItem
         addsub(); setLayout()
         DispatchQueue.main.async {
             self.addTarget()
-            self.title = "Thông Tin Tài Khoản"
             self.checkSession()
         }
     }
@@ -166,6 +173,7 @@ class ProfileVC: UIViewController, WKNavigationDelegate , SFSafariViewController
             strongSelf.logoAvatar.setImage(urlString: strongSelf.dataProfile.avatar!)
             strongSelf.titleName.text = strongSelf.dataProfile.username
             strongSelf.titleUserName.text = strongSelf.dataProfile.name
+            strongSelf.titlePhone.text = strongSelf.dataProfile.phone
         }failure: { (code) in
             self.showAlert(alertText: code, alertMessage: "Thông Tin Đăng Nhập Lỗi.")
             print(code)

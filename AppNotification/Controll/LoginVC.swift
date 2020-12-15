@@ -199,7 +199,8 @@ class LoginVC: UIViewController {
             let profile = UINavigationController(rootViewController: ProfileVC())
             profile.tabBarItem = UITabBarItem(title: "Thông Tin Tài Khoản", image: UIImage(systemName: "person.3"), tag: 1)
             tabBC.setViewControllers([homeVC, profile], animated: true)
-            tabBC.modalPresentationStyle = .overFullScreen
+            tabBC.modalPresentationStyle = .fullScreen
+            tabBC.tabBar.barTintColor = .white
             strongSelf.present(tabBC, animated: true)
         } failure: { (msg) in
             self.showAlert(alertText: "--**Lỗi**--", alertMessage: "Lỗi Đăng Nhập \n Vui Lòng Thử Lại")

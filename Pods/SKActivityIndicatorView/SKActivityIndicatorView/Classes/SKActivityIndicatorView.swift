@@ -22,6 +22,7 @@ public class SKActivityIndicator {
     fileprivate var statusTextColor: UIColor = UIColor.black
     fileprivate var spinnerColor: UIColor = UIColor.darkGray
     fileprivate var backgroundViewColor: UIColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.2)
+
     fileprivate var activityIndicatorStyle: ActivityIndicatorStyle = .defaultSpinner
     fileprivate var activityIndicatorTranslucency: UIBlurEffect.Style = .extraLight
 
@@ -121,6 +122,7 @@ public class SKActivityIndicator {
             let spinnerViewFrame = CGRect(x: 0, y: 0, width: 25, height: 25)
             spinnerContainerView = UIView(frame: spinnerViewFrame)
             spinnerContainerView!.backgroundColor = UIColor.clear
+           
         }
 
         /// Setup Spinner
@@ -132,6 +134,7 @@ public class SKActivityIndicator {
             spinnerContainerView = UIView(frame: spinnerViewFrame)
             spinnerContainerView!.backgroundColor = UIColor.clear
 
+            
             let viewLayer = spinnerContainerView!.layer
             let animationRectsize = CGSize(width: 37, height: 37)
             SKActivityIndicatorStyle.createSpinner(in: viewLayer, size: animationRectsize, color: spinnerColor, style: activityIndicatorStyle)

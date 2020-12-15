@@ -17,7 +17,8 @@ extension ApiManager{
             switch response.result{
             case .success(let value):
                 let json = JSON(value)
-                    if json["CODE"].stringValue == "SUCCESS" && !json["session_key"].stringValue.isEmpty{
+                let code = json["CODE"].stringValue
+                    if code == "SUCCESS"{
                     let sessionKey = json["session_key"].stringValue
                     UserDefaults.standard.setValue(sessionKey, forKey: "session_key")
                     success()

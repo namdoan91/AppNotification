@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		08414C0E257A13AA004EE5AA /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08414C0D257A13AA004EE5AA /* ProfileVC.swift */; };
 		08415CC525830ED300FBF733 /* API Manager + login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08415CC425830ED300FBF733 /* API Manager + login.swift */; };
-		08415CC925831D5D00FBF733 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08415CC825831D5D00FBF733 /* Notification.swift */; };
 		0847688D257BA855004D5680 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0847688C257BA855004D5680 /* SlideMenuController.swift */; };
-		08476890257BA957004D5680 /* AvatarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0847688F257BA957004D5680 /* AvatarVC.swift */; };
 		085423D625789F3B00B45DF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085423D525789F3B00B45DF1 /* AppDelegate.swift */; };
 		085423D825789F3B00B45DF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085423D725789F3B00B45DF1 /* SceneDelegate.swift */; };
 		085423DF25789F3C00B45DF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 085423DE25789F3C00B45DF1 /* Assets.xcassets */; };
@@ -29,7 +27,6 @@
 		0885C4932581F3A700DD8FBA /* cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0885C4922581F3A700DD8FBA /* cell.swift */; };
 		0885C497258201CD00DD8FBA /* API Manager + checkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0885C496258201CD00DD8FBA /* API Manager + checkSession.swift */; };
 		0885C49A25820DE300DD8FBA /* Extension + UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0885C49925820DE300DD8FBA /* Extension + UIImageView.swift */; };
-		088A2C3D257DBA3900FB3EE3 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A2C3C257DBA3900FB3EE3 /* MenuVC.swift */; };
 		088A2C46257DD5CC00FB3EE3 /* UIBarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A2C45257DD5CC00FB3EE3 /* UIBarImageView.swift */; };
 		088A2C50257E299300FB3EE3 /* ChangPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */; };
 		089751D72579258D00F5CD4D /* checkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089751D62579258D00F5CD4D /* checkSession.swift */; };
@@ -39,9 +36,7 @@
 /* Begin PBXFileReference section */
 		08414C0D257A13AA004EE5AA /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		08415CC425830ED300FBF733 /* API Manager + login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Manager + login.swift"; sourceTree = "<group>"; };
-		08415CC825831D5D00FBF733 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		0847688C257BA855004D5680 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
-		0847688F257BA957004D5680 /* AvatarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarVC.swift; sourceTree = "<group>"; };
 		085423D225789F3B00B45DF1 /* AppNotification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppNotification.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		085423D525789F3B00B45DF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		085423D725789F3B00B45DF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +56,6 @@
 		0885C4922581F3A700DD8FBA /* cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cell.swift; sourceTree = "<group>"; };
 		0885C496258201CD00DD8FBA /* API Manager + checkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Manager + checkSession.swift"; sourceTree = "<group>"; };
 		0885C49925820DE300DD8FBA /* Extension + UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIImageView.swift"; sourceTree = "<group>"; };
-		088A2C3C257DBA3900FB3EE3 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		088A2C45257DD5CC00FB3EE3 /* UIBarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarImageView.swift; sourceTree = "<group>"; };
 		088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangPassVC.swift; sourceTree = "<group>"; };
 		089751D62579258D00F5CD4D /* checkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkSession.swift; sourceTree = "<group>"; };
@@ -148,8 +142,6 @@
 		085423EC25789F4E00B45DF1 /* Controll */ = {
 			isa = PBXGroup;
 			children = (
-				0847688F257BA957004D5680 /* AvatarVC.swift */,
-				088A2C3C257DBA3900FB3EE3 /* MenuVC.swift */,
 				085423ED2578A02500B45DF1 /* LoginVC.swift */,
 				0854241F2578C73400B45DF1 /* HomeVC.swift */,
 				08414C0D257A13AA004EE5AA /* ProfileVC.swift */,
@@ -165,7 +157,6 @@
 				085424082578BFCE00B45DF1 /* UIAlert.swift */,
 				088A2C45257DD5CC00FB3EE3 /* UIBarImageView.swift */,
 				0885C49925820DE300DD8FBA /* Extension + UIImageView.swift */,
-				08415CC825831D5D00FBF733 /* Notification.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -313,10 +304,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				085424202578C73400B45DF1 /* HomeVC.swift in Sources */,
-				08476890257BA957004D5680 /* AvatarVC.swift in Sources */,
 				0885C4932581F3A700DD8FBA /* cell.swift in Sources */,
 				089751D72579258D00F5CD4D /* checkSession.swift in Sources */,
-				088A2C3D257DBA3900FB3EE3 /* MenuVC.swift in Sources */,
 				0854241A2578C45200B45DF1 /* API Manager.swift in Sources */,
 				08414C0E257A13AA004EE5AA /* ProfileVC.swift in Sources */,
 				085424062578B5E200B45DF1 /* Colors.swift in Sources */,
@@ -332,7 +321,6 @@
 				085423EE2578A02500B45DF1 /* LoginVC.swift in Sources */,
 				085424092578BFCE00B45DF1 /* UIAlert.swift in Sources */,
 				088A2C50257E299300FB3EE3 /* ChangPassVC.swift in Sources */,
-				08415CC925831D5D00FBF733 /* Notification.swift in Sources */,
 				0885C497258201CD00DD8FBA /* API Manager + checkSession.swift in Sources */,
 				0847688D257BA855004D5680 /* SlideMenuController.swift in Sources */,
 				085423D825789F3B00B45DF1 /* SceneDelegate.swift in Sources */,
@@ -476,9 +464,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AppNotification/AppNotification.entitlements;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 67CZR85ZG3;
 				INFOPLIST_FILE = AppNotification/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -498,9 +488,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AppNotification/AppNotificationRelease.entitlements;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 67CZR85ZG3;
 				INFOPLIST_FILE = AppNotification/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

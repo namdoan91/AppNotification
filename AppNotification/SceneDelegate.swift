@@ -18,12 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
      
 //        let tabBC = UITabBarController()
-        let loginVC = setupController()
+        let success = setupController()
         let sessionKey = UserDefaults.standard.string(forKey: "session_key") ?? ""
-
+        print("lưu sessionkey ở scendelegate: \(sessionKey)")
         if !sessionKey.isEmpty{
-//            window?.rootViewController = navigationController
-            window?.rootViewController = loginVC
+            window?.rootViewController = success
         }else{
             window?.rootViewController = LoginVC()
         }
@@ -40,8 +39,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let profile = UINavigationController(rootViewController: ProfileVC())
         profile.tabBarItem = UITabBarItem(title: "Thông Tin Tài Khoản", image: UIImage(systemName: "person.3"), tag: 1)
         tabBC.setViewControllers([homeVC, profile], animated: true)
+        tabBC.tabBar.barTintColor = .white
         return tabBC
-        
     }
     
     
@@ -51,6 +50,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
+        
     }
     
     func sceneWillEnterForeground(_ scene: UIScene) {
