@@ -30,6 +30,15 @@
 		088A2C46257DD5CC00FB3EE3 /* UIBarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A2C45257DD5CC00FB3EE3 /* UIBarImageView.swift */; };
 		088A2C50257E299300FB3EE3 /* ChangPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */; };
 		089751D72579258D00F5CD4D /* checkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089751D62579258D00F5CD4D /* checkSession.swift */; };
+		08D59C3F25898B2100BE5168 /* Cell Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C3E25898B2100BE5168 /* Cell Profile.swift */; };
+		08D59C422589BC1F00BE5168 /* cellPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C412589BC1F00BE5168 /* cellPassword.swift */; };
+		08D59C452589C40400BE5168 /* cellLogout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C442589C40400BE5168 /* cellLogout.swift */; };
+		08D59C4A2589DD8100BE5168 /* cellTerms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C492589DD8100BE5168 /* cellTerms.swift */; };
+		08D59C4D2589E16400BE5168 /* ProfileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C4C2589E16400BE5168 /* ProfileName.swift */; };
+		08D59C512589E3EA00BE5168 /* cellManual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C502589E3EA00BE5168 /* cellManual.swift */; };
+		08D59C542589E40400BE5168 /* cellComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C532589E40400BE5168 /* cellComment.swift */; };
+		08D59C572589E41100BE5168 /* cellSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C562589E41100BE5168 /* cellSupport.swift */; };
+		08D59C5A2589E42000BE5168 /* cellVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C592589E42000BE5168 /* cellVersion.swift */; };
 		68B53ECD2171CE89D5C59505 /* Pods_AppNotification.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B8A9DF71CB4B249EC2D7BD /* Pods_AppNotification.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +68,15 @@
 		088A2C45257DD5CC00FB3EE3 /* UIBarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarImageView.swift; sourceTree = "<group>"; };
 		088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangPassVC.swift; sourceTree = "<group>"; };
 		089751D62579258D00F5CD4D /* checkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkSession.swift; sourceTree = "<group>"; };
+		08D59C3E25898B2100BE5168 /* Cell Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell Profile.swift"; sourceTree = "<group>"; };
+		08D59C412589BC1F00BE5168 /* cellPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cellPassword.swift; sourceTree = "<group>"; };
+		08D59C442589C40400BE5168 /* cellLogout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cellLogout.swift; sourceTree = "<group>"; };
+		08D59C492589DD8100BE5168 /* cellTerms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cellTerms.swift; sourceTree = "<group>"; };
+		08D59C4C2589E16400BE5168 /* ProfileName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileName.swift; sourceTree = "<group>"; };
+		08D59C502589E3EA00BE5168 /* cellManual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cellManual.swift; sourceTree = "<group>"; };
+		08D59C532589E40400BE5168 /* cellComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cellComment.swift; sourceTree = "<group>"; };
+		08D59C562589E41100BE5168 /* cellSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cellSupport.swift; sourceTree = "<group>"; };
+		08D59C592589E42000BE5168 /* cellVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cellVersion.swift; sourceTree = "<group>"; };
 		132E53CFF298E8A3B041C2CD /* Pods-AppNotification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppNotification.release.xcconfig"; path = "Target Support Files/Pods-AppNotification/Pods-AppNotification.release.xcconfig"; sourceTree = "<group>"; };
 		2E944568B727FE57801F9FF9 /* Pods-AppNotification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppNotification.debug.xcconfig"; path = "Target Support Files/Pods-AppNotification/Pods-AppNotification.debug.xcconfig"; sourceTree = "<group>"; };
 		F1B8A9DF71CB4B249EC2D7BD /* Pods_AppNotification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppNotification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +143,14 @@
 			children = (
 				0885C4922581F3A700DD8FBA /* cell.swift */,
 				085424052578B5E200B45DF1 /* Colors.swift */,
+				08D59C3E25898B2100BE5168 /* Cell Profile.swift */,
+				08D59C412589BC1F00BE5168 /* cellPassword.swift */,
+				08D59C442589C40400BE5168 /* cellLogout.swift */,
+				08D59C492589DD8100BE5168 /* cellTerms.swift */,
+				08D59C502589E3EA00BE5168 /* cellManual.swift */,
+				08D59C532589E40400BE5168 /* cellComment.swift */,
+				08D59C562589E41100BE5168 /* cellSupport.swift */,
+				08D59C592589E42000BE5168 /* cellVersion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -145,6 +171,7 @@
 				085423ED2578A02500B45DF1 /* LoginVC.swift */,
 				0854241F2578C73400B45DF1 /* HomeVC.swift */,
 				08414C0D257A13AA004EE5AA /* ProfileVC.swift */,
+				08D59C4C2589E16400BE5168 /* ProfileName.swift */,
 				088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */,
 			);
 			path = Controll;
@@ -303,11 +330,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08D59C4D2589E16400BE5168 /* ProfileName.swift in Sources */,
 				085424202578C73400B45DF1 /* HomeVC.swift in Sources */,
 				0885C4932581F3A700DD8FBA /* cell.swift in Sources */,
 				089751D72579258D00F5CD4D /* checkSession.swift in Sources */,
 				0854241A2578C45200B45DF1 /* API Manager.swift in Sources */,
 				08414C0E257A13AA004EE5AA /* ProfileVC.swift in Sources */,
+				08D59C512589E3EA00BE5168 /* cellManual.swift in Sources */,
 				085424062578B5E200B45DF1 /* Colors.swift in Sources */,
 				0885C48B2581C76200DD8FBA /* getNotify.swift in Sources */,
 				0854241D2578C5BF00B45DF1 /* UserData.swift in Sources */,
@@ -316,13 +345,20 @@
 				08415CC525830ED300FBF733 /* API Manager + login.swift in Sources */,
 				085423D625789F3B00B45DF1 /* AppDelegate.swift in Sources */,
 				085423FC2578A15600B45DF1 /* Extension + UIImage.swift in Sources */,
+				08D59C422589BC1F00BE5168 /* cellPassword.swift in Sources */,
 				0885C49A25820DE300DD8FBA /* Extension + UIImageView.swift in Sources */,
+				08D59C3F25898B2100BE5168 /* Cell Profile.swift in Sources */,
 				0885C48F2581C86F00DD8FBA /* APINameManager.swift in Sources */,
 				085423EE2578A02500B45DF1 /* LoginVC.swift in Sources */,
+				08D59C572589E41100BE5168 /* cellSupport.swift in Sources */,
 				085424092578BFCE00B45DF1 /* UIAlert.swift in Sources */,
 				088A2C50257E299300FB3EE3 /* ChangPassVC.swift in Sources */,
 				0885C497258201CD00DD8FBA /* API Manager + checkSession.swift in Sources */,
+				08D59C542589E40400BE5168 /* cellComment.swift in Sources */,
+				08D59C452589C40400BE5168 /* cellLogout.swift in Sources */,
+				08D59C5A2589E42000BE5168 /* cellVersion.swift in Sources */,
 				0847688D257BA855004D5680 /* SlideMenuController.swift in Sources */,
+				08D59C4A2589DD8100BE5168 /* cellTerms.swift in Sources */,
 				085423D825789F3B00B45DF1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

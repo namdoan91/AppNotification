@@ -197,7 +197,7 @@ class LoginVC: UIViewController {
             homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
             
             let profile = UINavigationController(rootViewController: ProfileVC())
-            profile.tabBarItem = UITabBarItem(title: "Thông Tin Tài Khoản", image: UIImage(systemName: "person.3"), tag: 1)
+            profile.tabBarItem = UITabBarItem(title: "Tài Khoản", image: UIImage(systemName: "person.3"), tag: 1)
             tabBC.setViewControllers([homeVC, profile], animated: true)
             tabBC.modalPresentationStyle = .fullScreen
             tabBC.tabBar.barTintColor = .white

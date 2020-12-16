@@ -50,10 +50,6 @@ class ChangPassVC: UIViewController {
         stackview.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         stackview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         stackview.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: 0).isActive = true
-        
-        
-        
-        
     }
     @objc func animationOut(){
         UIView.animate(withDuration: 0.3){
