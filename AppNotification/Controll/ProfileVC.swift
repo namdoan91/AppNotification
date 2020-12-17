@@ -27,12 +27,6 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000),NSAttributedString.Key.font: UIFont(name: "Arial", size: 19)!]
         tableView.register(cellProfile.self, forCellReuseIdentifier: "cellProfile")
         tableView.register(cellPassword.self, forCellReuseIdentifier: "cellPassword")
-        tableView.register(cellLogout.self, forCellReuseIdentifier: "cellLogout")
-        tableView.register(cellTerms.self, forCellReuseIdentifier: "cellTerms")
-        tableView.register(cellManual.self, forCellReuseIdentifier: "cellManual")
-        tableView.register(cellComment.self, forCellReuseIdentifier: "cellComment")
-        tableView.register(cellSupport.self, forCellReuseIdentifier: "cellSupport")
-        tableView.register(cellVersion.self, forCellReuseIdentifier: "cellVersion")
         
         
         
@@ -81,37 +75,40 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
             cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
             return cell1
         }else if indexPath.row == 2{
-            let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellLogout" , for: indexPath) as! cellLogout
+            let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
+            
+            cell1.titleNewLabel.text = "Đăng Xuất"
             cell1.avatarTitle.alpha = 0.5
             return cell1
         }else if indexPath.row == 3{
-            let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellTerms" , for: indexPath) as! cellTerms
+            let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
             cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
+            cell1.titleNewLabel.text = "Chính Sách và Điều Khoản"
             cell1.backgroundColor = .clear
             return cell1
         }else if indexPath.row == 4{
-            let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellManual" , for: indexPath) as! cellManual
+            let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
             cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
             cell1.backgroundColor = .clear
             return cell1
         }else if indexPath.row == 5{
-            let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellManual" , for: indexPath) as! cellManual
+            let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
             cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
             cell1.titleNewLabel.text = "Hướng dẫn sử dụng trên điện thoại"
             cell1.backgroundColor = .clear
             return cell1
         }else if indexPath.row == 6{
-            let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellSupport" , for: indexPath) as! cellSupport
+            let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
             cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
             cell1.backgroundColor = .clear
             return cell1
         }else{
-            let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellVersion" , for: indexPath) as! cellVersion
+            let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
             cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
             cell1.backgroundColor = .clear

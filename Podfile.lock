@@ -1,17 +1,12 @@
 PODS:
-  - ActivityIndicatorView (0.0.6)
   - Alamofire (5.4.0)
-  - JXWebViewController (1.3.0)
+  - EZProgressHUD (1.5.3)
   - Kingfisher (5.15.7):
     - Kingfisher/Core (= 5.15.7)
   - Kingfisher/Core (5.15.7)
-  - NVActivityIndicatorView (5.1.1):
-    - NVActivityIndicatorView/Base (= 5.1.1)
-  - NVActivityIndicatorView/Base (5.1.1)
+  - MaterialActivityIndicator (0.0.6)
   - QuickLayout (3.0.0)
   - SideMenu (6.5.0)
-  - SideMenuSwift (2.0.6)
-  - SKActivityIndicatorView (1.0.0)
   - SkeletonView (1.11.0)
   - SkyFloatingLabelTextField (3.8.0)
   - SwiftEntryKit (1.2.6):
@@ -20,14 +15,11 @@ PODS:
   - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
-  - ActivityIndicatorView
   - Alamofire
-  - JXWebViewController
+  - EZProgressHUD
   - Kingfisher
-  - NVActivityIndicatorView
+  - MaterialActivityIndicator
   - SideMenu
-  - SideMenuSwift
-  - SKActivityIndicatorView
   - SkeletonView
   - SkyFloatingLabelTextField
   - SwiftEntryKit
@@ -36,15 +28,12 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - ActivityIndicatorView
     - Alamofire
-    - JXWebViewController
+    - EZProgressHUD
     - Kingfisher
-    - NVActivityIndicatorView
+    - MaterialActivityIndicator
     - QuickLayout
     - SideMenu
-    - SideMenuSwift
-    - SKActivityIndicatorView
     - SkeletonView
     - SkyFloatingLabelTextField
     - SwiftEntryKit
@@ -52,21 +41,18 @@ SPEC REPOS:
     - TextFieldEffects
 
 SPEC CHECKSUMS:
-  ActivityIndicatorView: f7c08841e302c86d16c29b7c9554fce2a2bd9183
   Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
-  JXWebViewController: 03b2eb44176270b79ff115eda1a64496963ab4e2
+  EZProgressHUD: ac65959b7a1f7eb3ccb9e4b176a77e27628e4174
   Kingfisher: 6e1a13523fcb1c86924ce53affe4ac957e544d59
-  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
+  MaterialActivityIndicator: 5061a52fadf7d22533734f2d34806311331bc424
   QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
-  SideMenuSwift: f12ca1b11faad909bfc2878df37e0a1c40fa4570
-  SKActivityIndicatorView: 81c123380127ad497f9b57cd4d11347e40ab3427
   SkeletonView: cc84ce90a804dd0dd7198dd802833411c8a64eaf
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   SwiftEntryKit: 96a2fa90b2631bbbfac50d18449e9ca3d0635f13
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: eaa99f132520fb3fe35aacd3e13bf73702fae6e5
+PODFILE CHECKSUM: 83aa08831eb36048e49fcf15e24e149ab4bb620a
 
 COCOAPODS: 1.10.0

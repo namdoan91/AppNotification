@@ -10,12 +10,10 @@ import Alamofire
 import SwiftyJSON
 import Kingfisher
 import WebKit
-import SafariServices
-import SKActivityIndicatorView
-import SkeletonView
 
 
-class HomeVC: UITableViewController, WKNavigationDelegate, SFSafariViewControllerDelegate{
+
+class HomeVC: UITableViewController, WKNavigationDelegate{
     var isFirst: Bool = true
     deinit {
         print("Huỷ HomeViewController")
@@ -32,26 +30,39 @@ class HomeVC: UITableViewController, WKNavigationDelegate, SFSafariViewControlle
     var imageviewCell: UIImageView!
     var sourceRound = [String]()
     var timer = [String]()
+
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+//        view.backgroundColor = .white
         title = "MVP APP"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000),NSAttributedString.Key.font: UIFont(name: "Arial", size: 19)!]
         navigationItem.title = "MVP APP - NOTIFICATION"
         tableView.register(cell.self, forCellReuseIdentifier: "cell")
         tableView.separatorStyle = .singleLine
-       
-//        tableView.backgroundColor = UIColor(red:0.165, green:0.192, blue:0.259, alpha: 1.000).withAlphaComponent(0.5)
-        SKActivityIndicator.show("Đang lấy dữ liệu!!", userInteractionStatus: true)
-        SKActivityIndicator.spinnerColor(UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000))
-        SKActivityIndicator.statusTextColor(UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000))
-        SKActivityIndicator.spinnerStyle(.spinningHalfCircles)
-        SKActivityIndicator.statusLabelFont(UIFont.init(name: "Arial", size: 15)!)
         DispatchQueue.main.async {
             self.checkSession()
             self.getNotify()
-            
+            self.loadinHubShow()
         }
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+
+    }
+    func loadinHubShow() {
+        let alert = UIAlertController(title: nil, message: "Đang Tải Dữ Liệu ...!!!", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.color = .blue
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+    }
+
+    func loadinHubDismiss() {
+         dismiss(animated: false, completion: nil)
     }
     func checkSession(){
         ApiManager.shared.checkSession { [weak self] (_ data) in
@@ -67,7 +78,7 @@ class HomeVC: UITableViewController, WKNavigationDelegate, SFSafariViewControlle
     func getNotify(){
         ApiManager.shared.getNotify { [weak self] (_ data) in
             guard let strongSelf = self else {return}
-            SKActivityIndicator.dismiss()
+            strongSelf.loadinHubDismiss()
             strongSelf.getNotification = data
             strongSelf.sourceRound.append((strongSelf.getNotification?.content)!)
             strongSelf.id.append((strongSelf.getNotification?.id)!)
@@ -76,10 +87,9 @@ class HomeVC: UITableViewController, WKNavigationDelegate, SFSafariViewControlle
             strongSelf.content.append((strongSelf.getNotification?.title)!)
             strongSelf.timer.append((strongSelf.getNotification?.createdAt)!)
             strongSelf.tableView.reloadData()
-
         } failure: { (code) in
             self.showAlert(alertText: "Lỗi....!!!!!", alertMessage: "Không lấy được thông tin")
-            
+
         }
     }
    
