@@ -27,7 +27,7 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000),NSAttributedString.Key.font: UIFont(name: "Arial", size: 19)!]
         tableView.register(cellProfile.self, forCellReuseIdentifier: "cellProfile")
         tableView.register(cellPassword.self, forCellReuseIdentifier: "cellPassword")
-        
+        tableView.register(cellSupport.self, forCellReuseIdentifier: "cellSupport")
         
         
         tableView.separatorStyle = .none
@@ -73,24 +73,29 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
             cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
+            cell1.backgroundColor = .clear
             return cell1
         }else if indexPath.row == 2{
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
-            
-            cell1.titleNewLabel.text = "Đăng Xuất"
+            cell1.avatarTitle.image = UIImage(named: "ditre")?.withTintColor(.blue)
             cell1.avatarTitle.alpha = 0.5
+            cell1.titleNewLabel.text = "Đăng Xuất"
+            cell1.backgroundColor = .clear
             return cell1
         }else if indexPath.row == 3{
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
+            cell1.avatarTitle.image = UIImage(systemName: "lock.shield")
             cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
-            cell1.titleNewLabel.text = "Chính Sách và Điều Khoản"
+            cell1.titleNewLabel.text = "Chính sách và Điều khoản"
             cell1.backgroundColor = .clear
             return cell1
         }else if indexPath.row == 4{
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
+            cell1.avatarTitle.image = UIImage(systemName: "book")
+            cell1.titleNewLabel.text = "Hướng dẫn sử dụng"
             cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
             cell1.backgroundColor = .clear
             return cell1
@@ -98,19 +103,25 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
             cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
-            cell1.titleNewLabel.text = "Hướng dẫn sử dụng trên điện thoại"
+            cell1.avatarTitle.image = UIImage(systemName: "bubble.left.and.bubble.right")
+            cell1.titleNewLabel.text = "Hỗ trợ"
             cell1.backgroundColor = .clear
             return cell1
         }else if indexPath.row == 6{
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
             cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
+            cell1.avatarTitle.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+            cell1.avatarTitle.image = UIImage(systemName: "envelope.fill")
+            cell1.titleNewLabel.text = "Đóng góp ý kiến"
             cell1.backgroundColor = .clear
             return cell1
         }else{
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
             cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
+            cell1.avatarTitle.image = UIImage(systemName: "info.circle.fill")
+            cell1.titleNewLabel.text = "Phiên Bản"
             cell1.backgroundColor = .clear
             return cell1
         }

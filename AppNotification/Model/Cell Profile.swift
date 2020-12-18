@@ -52,8 +52,13 @@ class cellProfile: UITableViewCell{
         super.setSelected(selected, animated: animated)
         addSub()
         setLayout()
-        containerView.layer.shadowColor = UIColor.blue.withAlphaComponent(0.5).cgColor
-
+//        containerView.layer.shadowColor = UIColor.blue.withAlphaComponent(0.5).cgColor
+//        containerView.layer.masksToBounds = false
+//        containerView.layer.shadowOffset = CGSize(width: 0, height: 10)
+//        containerView.layer.shadowOpacity = 30
+//        containerView.layer.shadowRadius = 10
+//        containerView.layer.shadowColor = UIColor.init(red: 0, green: 0.2, blue: 0.5, alpha: 0.5).cgColor
+//        containerView.layer.cornerRadius = 5
     }
     func addSub(){
         self.addSubview(containerView)
@@ -64,9 +69,9 @@ class cellProfile: UITableViewCell{
     
     }
     func setLayout(){
-        containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
-        containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-        containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+        containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
+        containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
         containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
         
 //        titleNewLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 5).isActive = true

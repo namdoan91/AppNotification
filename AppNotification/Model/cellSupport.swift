@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class cellPassword: UITableViewCell{
+class cellSupport: UITableViewCell{
     let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +26,11 @@ class cellPassword: UITableViewCell{
         return titleNewLabel
     }()
     let avatarTitle: UIImageView = {
-        let avatarTitle = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+        let avatarTitle = UIImageView()
+        avatarTitle.translatesAutoresizingMaskIntoConstraints = false
+        avatarTitle.image = UIImage.init(systemName: "lock")?.withTintColor(.purple, renderingMode: .automatic)
+//        avatarTitle.layer.cornerRadius = avatarTitle.frame.size.height/2
+        avatarTitle.contentMode = .scaleAspectFit
         avatarTitle.clipsToBounds = true
         return avatarTitle
     }()
@@ -58,7 +62,7 @@ class cellPassword: UITableViewCell{
         
     }
     func setLayout(){
-        containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+        containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
         containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
         containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
         containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true

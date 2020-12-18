@@ -60,7 +60,6 @@ class HomeVC: UITableViewController, WKNavigationDelegate{
         alert.view.addSubview(loadingIndicator)
         present(alert, animated: true, completion: nil)
     }
-
     func loadinHubDismiss() {
          dismiss(animated: false, completion: nil)
     }
@@ -89,7 +88,6 @@ class HomeVC: UITableViewController, WKNavigationDelegate{
             strongSelf.tableView.reloadData()
         } failure: { (code) in
             self.showAlert(alertText: "Lỗi....!!!!!", alertMessage: "Không lấy được thông tin")
-
         }
     }
    
