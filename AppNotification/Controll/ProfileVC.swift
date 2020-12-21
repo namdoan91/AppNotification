@@ -56,6 +56,9 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
             self.showAlert(alertText: code, alertMessage: "Thông Tin Đăng Nhập Lỗi.")
         }
     }
+    func safariViewControllerDidFinish() {
+        dismiss(animated: true)
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 8
         
@@ -72,29 +75,30 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
         }else if indexPath.row == 1{
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
+            cell1.avatarTitle.image = UIImage(systemName: "lock.fill")
             cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
             cell1.backgroundColor = .clear
             return cell1
         }else if indexPath.row == 2{
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
-            cell1.avatarTitle.image = UIImage(named: "ditre")?.withTintColor(.blue)
-            cell1.avatarTitle.alpha = 0.5
+            cell1.avatarTitle.image = UIImage(systemName: "power")
+            cell1.avatarTitle.tintColor = UIColor.red
             cell1.titleNewLabel.text = "Đăng Xuất"
             cell1.backgroundColor = .clear
             return cell1
         }else if indexPath.row == 3{
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
-            cell1.avatarTitle.image = UIImage(systemName: "lock.shield")
-            cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
+            cell1.avatarTitle.image = UIImage(systemName: "lock.shield.fill")
+            cell1.avatarTitle.tintColor = UIColor.blue
             cell1.titleNewLabel.text = "Chính sách và Điều khoản"
             cell1.backgroundColor = .clear
             return cell1
         }else if indexPath.row == 4{
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
-            cell1.avatarTitle.image = UIImage(systemName: "book")
+            cell1.avatarTitle.image = UIImage(systemName: "book.fill")
             cell1.titleNewLabel.text = "Hướng dẫn sử dụng"
             cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
             cell1.backgroundColor = .clear
@@ -103,15 +107,15 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
             cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
-            cell1.avatarTitle.image = UIImage(systemName: "bubble.left.and.bubble.right")
+            cell1.avatarTitle.image = UIImage(systemName: "bubble.left.and.bubble.right.fill")
             cell1.titleNewLabel.text = "Hỗ trợ"
             cell1.backgroundColor = .clear
             return cell1
         }else if indexPath.row == 6{
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
-            cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
-            cell1.avatarTitle.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+            cell1.avatarTitle.tintColor = UIColor.blue
+            cell1.avatarTitle.frame = CGRect(x: 5, y: 10, width: 25, height: 25)
             cell1.avatarTitle.image = UIImage(systemName: "envelope.fill")
             cell1.titleNewLabel.text = "Đóng góp ý kiến"
             cell1.backgroundColor = .clear
@@ -119,7 +123,7 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
         }else{
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
-            cell1.avatarTitle.tintColor = UIColor.blue.withAlphaComponent(0.5)
+            cell1.avatarTitle.tintColor = UIColor.blue
             cell1.avatarTitle.image = UIImage(systemName: "info.circle.fill")
             cell1.titleNewLabel.text = "Phiên Bản"
             cell1.backgroundColor = .clear
@@ -137,23 +141,43 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
         }
         if indexPath.row == 2{
             UserDefaults.standard.removeObject(forKey: "session_key")
-            HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
-            print("[WebCacheCleaner] All cookies deleted")
-            WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
-                records.forEach { record in
-                    WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
-                    print("[WebCacheCleaner] Record \(record) deleted")
-                }
-            }
+
+//            HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+//            print("[WebCacheCleaner] All cookies deleted")
+//            WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+//                records.forEach { record in
+//                    WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {
+//                        let vc = SFSafariViewController(url: URL(string: "https://id.mvpapp.vn/api/v1")!, entersReaderIfAvailable: true)
+//                        vc.delegate = self
+//                        self.present(vc, animated: true)
+//                    })
+//                    print("[WebCacheCleaner] Record \(record) deleted")
+//                }
+//            }
             let loginVC = LoginVC()
             let window = UIApplication.shared.windows.first
             window?.rootViewController = loginVC
+        }
+        if indexPath.row == 3{
+            navigationController?.pushViewController(TermsVC(), animated: true)
+        }
+        if indexPath.row == 4{
+            navigationController?.pushViewController(UserGuideVC(), animated: true)
+        }
+        if indexPath.row == 5{
+            navigationController?.pushViewController(SupportVC(), animated: true)
+        }
+        if indexPath.row == 6{
+            
+        }
+        if indexPath.row == 7{
+            navigationController?.pushViewController(VersionVC(), animated: true)
         }
 
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return UITableView.automaticDimension
-        return 70
+        return 50
     }
 
 }

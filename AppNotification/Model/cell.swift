@@ -53,6 +53,7 @@ class cell: UITableViewCell {
         avatarTitle.layer.masksToBounds = true
         return avatarTitle
     }()
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -60,11 +61,6 @@ class cell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         addSub()
         setLayout()
-//        containerView.layer.masksToBounds = false
-//        containerView.layer.shadowOffset = CGSize(width: 0, height: 8)
-//        containerView.layer.shadowOpacity = 0.5
-//        containerView.layer.shadowRadius = 5
-//        containerView.layer.shadowColor = UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000).cgColor
         containerView.layer.shadowColor = UIColor.blue.withAlphaComponent(0.5).cgColor
 
     }

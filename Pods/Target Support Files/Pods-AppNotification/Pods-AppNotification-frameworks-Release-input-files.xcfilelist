@@ -1,6 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-AppNotification/Pods-AppNotification-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/EZProgressHUD/EZProgressHUD.framework
+${BUILT_PRODUCTS_DIR}/FoldingCell/FoldingCell.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/MaterialActivityIndicator/MaterialActivityIndicator.framework
 ${BUILT_PRODUCTS_DIR}/QuickLayout/QuickLayout.framework

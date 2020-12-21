@@ -26,7 +26,7 @@ class cellPassword: UITableViewCell{
         return titleNewLabel
     }()
     let avatarTitle: UIImageView = {
-        let avatarTitle = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+        let avatarTitle = UIImageView(frame: CGRect(x: 5, y: 10, width: 25, height: 25))
         avatarTitle.clipsToBounds = true
         return avatarTitle
     }()
@@ -41,13 +41,13 @@ class cellPassword: UITableViewCell{
         super.setSelected(selected, animated: animated)
         addSub()
         setLayout()
-        containerView.layer.shadowColor = UIColor.blue.withAlphaComponent(0.5).cgColor
-        containerView.layer.masksToBounds = false
-        containerView.layer.shadowOffset = CGSize(width: 10, height: 10)
-        containerView.layer.shadowOpacity = 10
-        containerView.layer.shadowRadius = 10
-        containerView.layer.shadowColor = UIColor.init(red: 0, green: 0.2, blue: 0.5, alpha: 0.5).cgColor
-        containerView.layer.cornerRadius = 5
+//        containerView.layer.shadowColor = UIColor.blue.withAlphaComponent(0.5).cgColor
+//        containerView.layer.masksToBounds = false
+//        containerView.layer.shadowOffset = CGSize(width: 10, height: 10)
+//        containerView.layer.shadowOpacity = 10
+//        containerView.layer.shadowRadius = 10
+//        containerView.layer.shadowColor = UIColor.init(red: 0, green: 0.2, blue: 0.5, alpha: 0.5).cgColor
+//        containerView.layer.cornerRadius = 5
     }
     func addSub(){
         self.addSubview(containerView)
@@ -58,10 +58,10 @@ class cellPassword: UITableViewCell{
         
     }
     func setLayout(){
-        containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-        containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
+        containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 2).isActive = true
+        containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2).isActive = true
         
         
         avatarTitle.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true

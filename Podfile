@@ -7,6 +7,7 @@ target 'AppNotification' do
 
   # Pods for AppNotification
 	pod 'Alamofire'
+	pod 'FoldingCell'
 	pod 'SwiftyJSON'
 	pod 'SkeletonView'
 	pod 'MaterialActivityIndicator'

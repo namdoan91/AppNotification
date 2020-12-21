@@ -12,14 +12,14 @@ class cellProfile: UITableViewCell{
     let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
 //        view.layer.cornerRadius = 15
         return view
     }()
     let titleNewLabel: UILabel = {
         let titleNewLabel = UILabel()
         titleNewLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleNewLabel.textColor = UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000)
+        titleNewLabel.textColor = UIColor.white
         titleNewLabel.font = UIFont.init(name: "Times New Roman", size: 20)
         titleNewLabel.textAlignment = .left
         return titleNewLabel
@@ -52,6 +52,7 @@ class cellProfile: UITableViewCell{
         super.setSelected(selected, animated: animated)
         addSub()
         setLayout()
+        
 //        containerView.layer.shadowColor = UIColor.blue.withAlphaComponent(0.5).cgColor
 //        containerView.layer.masksToBounds = false
 //        containerView.layer.shadowOffset = CGSize(width: 0, height: 10)
@@ -69,10 +70,10 @@ class cellProfile: UITableViewCell{
     
     }
     func setLayout(){
-        containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
-        containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-        containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
+        containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+        containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2).isActive = true
         
 //        titleNewLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 5).isActive = true
 //        titleNewLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5).isActive = true

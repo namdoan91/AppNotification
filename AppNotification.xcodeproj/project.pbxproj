@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0833B15425905A740094FA9A /* API Manager + changepass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0833B15325905A740094FA9A /* API Manager + changepass.swift */; };
+		0833B15725905BD60094FA9A /* changPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0833B15625905BD60094FA9A /* changPass.swift */; };
+		0833B15C259074AD0094FA9A /* VersionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0833B15B259074AD0094FA9A /* VersionVC.swift */; };
+		0833B15F2590750E0094FA9A /* SupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0833B15E2590750E0094FA9A /* SupportVC.swift */; };
+		0833B1622590754A0094FA9A /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0833B1612590754A0094FA9A /* TermsVC.swift */; };
+		0833B166259076370094FA9A /* UserGuideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0833B165259076370094FA9A /* UserGuideVC.swift */; };
 		08414C0E257A13AA004EE5AA /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08414C0D257A13AA004EE5AA /* ProfileVC.swift */; };
 		08415CC525830ED300FBF733 /* API Manager + login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08415CC425830ED300FBF733 /* API Manager + login.swift */; };
 		0847688D257BA855004D5680 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0847688C257BA855004D5680 /* SlideMenuController.swift */; };
@@ -38,6 +44,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0833B15325905A740094FA9A /* API Manager + changepass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Manager + changepass.swift"; sourceTree = "<group>"; };
+		0833B15625905BD60094FA9A /* changPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changPass.swift; sourceTree = "<group>"; };
+		0833B15B259074AD0094FA9A /* VersionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionVC.swift; sourceTree = "<group>"; };
+		0833B15E2590750E0094FA9A /* SupportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportVC.swift; sourceTree = "<group>"; };
+		0833B1612590754A0094FA9A /* TermsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsVC.swift; sourceTree = "<group>"; };
+		0833B165259076370094FA9A /* UserGuideVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGuideVC.swift; sourceTree = "<group>"; };
 		08414C0D257A13AA004EE5AA /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		08415CC425830ED300FBF733 /* API Manager + login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Manager + login.swift"; sourceTree = "<group>"; };
 		0847688C257BA855004D5680 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
@@ -84,6 +96,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0833B164259075D90094FA9A /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */,
+				0833B15B259074AD0094FA9A /* VersionVC.swift */,
+				0833B15E2590750E0094FA9A /* SupportVC.swift */,
+				0833B1612590754A0094FA9A /* TermsVC.swift */,
+				0833B165259076370094FA9A /* UserGuideVC.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		08476892257BA95F004D5680 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +170,7 @@
 				0854241C2578C5BF00B45DF1 /* UserData.swift */,
 				089751D62579258D00F5CD4D /* checkSession.swift */,
 				0885C48A2581C76200DD8FBA /* getNotify.swift */,
+				0833B15625905BD60094FA9A /* changPass.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -157,7 +182,7 @@
 				0854241F2578C73400B45DF1 /* HomeVC.swift */,
 				08414C0D257A13AA004EE5AA /* ProfileVC.swift */,
 				08D59C4C2589E16400BE5168 /* ProfileName.swift */,
-				088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */,
+				0833B164259075D90094FA9A /* Setting */,
 			);
 			path = Controll;
 			sourceTree = "<group>";
@@ -181,6 +206,7 @@
 				0885C4872581C69200DD8FBA /* API Manager + getNotify.swift */,
 				0885C496258201CD00DD8FBA /* API Manager + checkSession.swift */,
 				08415CC425830ED300FBF733 /* API Manager + login.swift */,
+				0833B15325905A740094FA9A /* API Manager + changepass.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -317,14 +343,19 @@
 			files = (
 				08D59C4D2589E16400BE5168 /* ProfileName.swift in Sources */,
 				085424202578C73400B45DF1 /* HomeVC.swift in Sources */,
+				0833B15425905A740094FA9A /* API Manager + changepass.swift in Sources */,
+				0833B166259076370094FA9A /* UserGuideVC.swift in Sources */,
 				0885C4932581F3A700DD8FBA /* cell.swift in Sources */,
 				089751D72579258D00F5CD4D /* checkSession.swift in Sources */,
+				0833B15C259074AD0094FA9A /* VersionVC.swift in Sources */,
 				0854241A2578C45200B45DF1 /* API Manager.swift in Sources */,
 				08414C0E257A13AA004EE5AA /* ProfileVC.swift in Sources */,
+				0833B1622590754A0094FA9A /* TermsVC.swift in Sources */,
 				085424062578B5E200B45DF1 /* Colors.swift in Sources */,
 				0885C48B2581C76200DD8FBA /* getNotify.swift in Sources */,
 				0854241D2578C5BF00B45DF1 /* UserData.swift in Sources */,
 				088A2C46257DD5CC00FB3EE3 /* UIBarImageView.swift in Sources */,
+				0833B15F2590750E0094FA9A /* SupportVC.swift in Sources */,
 				0885C4882581C69200DD8FBA /* API Manager + getNotify.swift in Sources */,
 				08415CC525830ED300FBF733 /* API Manager + login.swift in Sources */,
 				08DEDF95258C3FFB0012AAAA /* cellSupport.swift in Sources */,
@@ -333,6 +364,7 @@
 				08D59C422589BC1F00BE5168 /* cellPassword.swift in Sources */,
 				0885C49A25820DE300DD8FBA /* Extension + UIImageView.swift in Sources */,
 				08D59C3F25898B2100BE5168 /* Cell Profile.swift in Sources */,
+				0833B15725905BD60094FA9A /* changPass.swift in Sources */,
 				0885C48F2581C86F00DD8FBA /* APINameManager.swift in Sources */,
 				085423EE2578A02500B45DF1 /* LoginVC.swift in Sources */,
 				085424092578BFCE00B45DF1 /* UIAlert.swift in Sources */,
