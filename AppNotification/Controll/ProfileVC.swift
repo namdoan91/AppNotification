@@ -132,12 +132,10 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0{
-            let profileName = ProfileName()
-            navigationController?.pushViewController(profileName, animated: true)
+            navigationController?.pushViewController(ProfileName(), animated: true)
         }
         if indexPath.row == 1{
-            let changPassVC = ChangPassVC()
-            navigationController?.pushViewController(changPassVC, animated: true)
+            navigationController?.pushViewController(ChangPassVC(), animated: true)
         }
         if indexPath.row == 2{
             UserDefaults.standard.removeObject(forKey: "session_key")
@@ -173,11 +171,10 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
         if indexPath.row == 7{
             navigationController?.pushViewController(VersionVC(), animated: true)
         }
-
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return UITableView.automaticDimension
-        return 50
+        return 40
     }
 
 }

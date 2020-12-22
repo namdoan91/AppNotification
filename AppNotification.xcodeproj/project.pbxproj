@@ -36,6 +36,7 @@
 		088A2C46257DD5CC00FB3EE3 /* UIBarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A2C45257DD5CC00FB3EE3 /* UIBarImageView.swift */; };
 		088A2C50257E299300FB3EE3 /* ChangPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */; };
 		089751D72579258D00F5CD4D /* checkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089751D62579258D00F5CD4D /* checkSession.swift */; };
+		08CF6D372591C5E2004CF720 /* DemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF6D362591C5E2004CF720 /* DemoCell.swift */; };
 		08D59C3F25898B2100BE5168 /* Cell Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C3E25898B2100BE5168 /* Cell Profile.swift */; };
 		08D59C422589BC1F00BE5168 /* cellPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C412589BC1F00BE5168 /* cellPassword.swift */; };
 		08D59C4D2589E16400BE5168 /* ProfileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C4C2589E16400BE5168 /* ProfileName.swift */; };
@@ -75,6 +76,7 @@
 		088A2C45257DD5CC00FB3EE3 /* UIBarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarImageView.swift; sourceTree = "<group>"; };
 		088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangPassVC.swift; sourceTree = "<group>"; };
 		089751D62579258D00F5CD4D /* checkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkSession.swift; sourceTree = "<group>"; };
+		08CF6D362591C5E2004CF720 /* DemoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCell.swift; sourceTree = "<group>"; };
 		08D59C3E25898B2100BE5168 /* Cell Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell Profile.swift"; sourceTree = "<group>"; };
 		08D59C412589BC1F00BE5168 /* cellPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cellPassword.swift; sourceTree = "<group>"; };
 		08D59C4C2589E16400BE5168 /* ProfileName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileName.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		085423EA25789F4100B45DF1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				08CF6D362591C5E2004CF720 /* DemoCell.swift */,
 				0885C4922581F3A700DD8FBA /* cell.swift */,
 				085424052578B5E200B45DF1 /* Colors.swift */,
 				08D59C3E25898B2100BE5168 /* Cell Profile.swift */,
@@ -355,6 +358,7 @@
 				0885C48B2581C76200DD8FBA /* getNotify.swift in Sources */,
 				0854241D2578C5BF00B45DF1 /* UserData.swift in Sources */,
 				088A2C46257DD5CC00FB3EE3 /* UIBarImageView.swift in Sources */,
+				08CF6D372591C5E2004CF720 /* DemoCell.swift in Sources */,
 				0833B15F2590750E0094FA9A /* SupportVC.swift in Sources */,
 				0885C4882581C69200DD8FBA /* API Manager + getNotify.swift in Sources */,
 				08415CC525830ED300FBF733 /* API Manager + login.swift in Sources */,
