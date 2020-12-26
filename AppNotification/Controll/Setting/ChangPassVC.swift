@@ -14,8 +14,6 @@ class ChangPassVC: UIViewController {
     deinit {
         print("Huỷ ChangePass Controller")
     }
-  
-    
     let container:UIView = {
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
@@ -88,6 +86,7 @@ class ChangPassVC: UIViewController {
         register.backgroundColor = UIColor(red:0.733, green:0.733, blue:0.733, alpha: 1.000)
         register.layer.cornerRadius = 15
         register.titleLabel?.font = UIFont.init(name: "Arial", size: 15)
+        register.isUserInteractionEnabled = false
         return register
     }()
     override func viewDidLoad() {
@@ -175,10 +174,6 @@ class ChangPassVC: UIViewController {
         titleNewPass.leadingAnchor.constraint(equalTo: stackview.leadingAnchor, constant: 20).isActive = true
         titleNewPass.trailingAnchor.constraint(equalTo: stackview.trailingAnchor, constant: -20).isActive = true
         titleNewPass.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        
-//        reNewPass.topAnchor.constraint(equalTo: newPass.bottomAnchor, constant:  40).isActive = true
-//        reNewPass.leadingAnchor.constraint(equalTo: stackview.leadingAnchor, constant: 20).isActive = true
-//        reNewPass.trailingAnchor.constraint(equalTo: stackview.trailingAnchor, constant: -20).isActive = true
         
         titleReNewPass.topAnchor.constraint(equalTo: titleNewPass.bottomAnchor, constant: 10).isActive = true
         titleReNewPass.leadingAnchor.constraint(equalTo: stackview.leadingAnchor, constant: 20).isActive = true

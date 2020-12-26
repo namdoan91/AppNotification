@@ -16,6 +16,7 @@
 		08414C0E257A13AA004EE5AA /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08414C0D257A13AA004EE5AA /* ProfileVC.swift */; };
 		08415CC525830ED300FBF733 /* API Manager + login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08415CC425830ED300FBF733 /* API Manager + login.swift */; };
 		0847688D257BA855004D5680 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0847688C257BA855004D5680 /* SlideMenuController.swift */; };
+		084E35502596D19F0017362D /* getFormattedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E354F2596D19F0017362D /* getFormattedDate.swift */; };
 		085423D625789F3B00B45DF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085423D525789F3B00B45DF1 /* AppDelegate.swift */; };
 		085423D825789F3B00B45DF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085423D725789F3B00B45DF1 /* SceneDelegate.swift */; };
 		085423DF25789F3C00B45DF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 085423DE25789F3C00B45DF1 /* Assets.xcassets */; };
@@ -36,11 +37,9 @@
 		088A2C46257DD5CC00FB3EE3 /* UIBarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A2C45257DD5CC00FB3EE3 /* UIBarImageView.swift */; };
 		088A2C50257E299300FB3EE3 /* ChangPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */; };
 		089751D72579258D00F5CD4D /* checkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089751D62579258D00F5CD4D /* checkSession.swift */; };
-		08CF6D372591C5E2004CF720 /* DemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF6D362591C5E2004CF720 /* DemoCell.swift */; };
 		08D59C3F25898B2100BE5168 /* Cell Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C3E25898B2100BE5168 /* Cell Profile.swift */; };
 		08D59C422589BC1F00BE5168 /* cellPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C412589BC1F00BE5168 /* cellPassword.swift */; };
 		08D59C4D2589E16400BE5168 /* ProfileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C4C2589E16400BE5168 /* ProfileName.swift */; };
-		08DEDF95258C3FFB0012AAAA /* cellSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DEDF94258C3FFB0012AAAA /* cellSupport.swift */; };
 		68B53ECD2171CE89D5C59505 /* Pods_AppNotification.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B8A9DF71CB4B249EC2D7BD /* Pods_AppNotification.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +53,7 @@
 		08414C0D257A13AA004EE5AA /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		08415CC425830ED300FBF733 /* API Manager + login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Manager + login.swift"; sourceTree = "<group>"; };
 		0847688C257BA855004D5680 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
+		084E354F2596D19F0017362D /* getFormattedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getFormattedDate.swift; sourceTree = "<group>"; };
 		085423D225789F3B00B45DF1 /* AppNotification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppNotification.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		085423D525789F3B00B45DF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		085423D725789F3B00B45DF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,11 +76,9 @@
 		088A2C45257DD5CC00FB3EE3 /* UIBarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarImageView.swift; sourceTree = "<group>"; };
 		088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangPassVC.swift; sourceTree = "<group>"; };
 		089751D62579258D00F5CD4D /* checkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkSession.swift; sourceTree = "<group>"; };
-		08CF6D362591C5E2004CF720 /* DemoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCell.swift; sourceTree = "<group>"; };
 		08D59C3E25898B2100BE5168 /* Cell Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell Profile.swift"; sourceTree = "<group>"; };
 		08D59C412589BC1F00BE5168 /* cellPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cellPassword.swift; sourceTree = "<group>"; };
 		08D59C4C2589E16400BE5168 /* ProfileName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileName.swift; sourceTree = "<group>"; };
-		08DEDF94258C3FFB0012AAAA /* cellSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cellSupport.swift; sourceTree = "<group>"; };
 		132E53CFF298E8A3B041C2CD /* Pods-AppNotification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppNotification.release.xcconfig"; path = "Target Support Files/Pods-AppNotification/Pods-AppNotification.release.xcconfig"; sourceTree = "<group>"; };
 		2E944568B727FE57801F9FF9 /* Pods-AppNotification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppNotification.debug.xcconfig"; path = "Target Support Files/Pods-AppNotification/Pods-AppNotification.debug.xcconfig"; sourceTree = "<group>"; };
 		F1B8A9DF71CB4B249EC2D7BD /* Pods_AppNotification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppNotification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +99,7 @@
 		0833B164259075D90094FA9A /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				08D59C4C2589E16400BE5168 /* ProfileName.swift */,
 				088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */,
 				0833B15B259074AD0094FA9A /* VersionVC.swift */,
 				0833B15E2590750E0094FA9A /* SupportVC.swift */,
@@ -157,12 +156,10 @@
 		085423EA25789F4100B45DF1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				08CF6D362591C5E2004CF720 /* DemoCell.swift */,
 				0885C4922581F3A700DD8FBA /* cell.swift */,
 				085424052578B5E200B45DF1 /* Colors.swift */,
 				08D59C3E25898B2100BE5168 /* Cell Profile.swift */,
 				08D59C412589BC1F00BE5168 /* cellPassword.swift */,
-				08DEDF94258C3FFB0012AAAA /* cellSupport.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -184,7 +181,6 @@
 				085423ED2578A02500B45DF1 /* LoginVC.swift */,
 				0854241F2578C73400B45DF1 /* HomeVC.swift */,
 				08414C0D257A13AA004EE5AA /* ProfileVC.swift */,
-				08D59C4C2589E16400BE5168 /* ProfileName.swift */,
 				0833B164259075D90094FA9A /* Setting */,
 			);
 			path = Controll;
@@ -197,6 +193,7 @@
 				085424082578BFCE00B45DF1 /* UIAlert.swift */,
 				088A2C45257DD5CC00FB3EE3 /* UIBarImageView.swift */,
 				0885C49925820DE300DD8FBA /* Extension + UIImageView.swift */,
+				084E354F2596D19F0017362D /* getFormattedDate.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -358,11 +355,9 @@
 				0885C48B2581C76200DD8FBA /* getNotify.swift in Sources */,
 				0854241D2578C5BF00B45DF1 /* UserData.swift in Sources */,
 				088A2C46257DD5CC00FB3EE3 /* UIBarImageView.swift in Sources */,
-				08CF6D372591C5E2004CF720 /* DemoCell.swift in Sources */,
 				0833B15F2590750E0094FA9A /* SupportVC.swift in Sources */,
 				0885C4882581C69200DD8FBA /* API Manager + getNotify.swift in Sources */,
 				08415CC525830ED300FBF733 /* API Manager + login.swift in Sources */,
-				08DEDF95258C3FFB0012AAAA /* cellSupport.swift in Sources */,
 				085423D625789F3B00B45DF1 /* AppDelegate.swift in Sources */,
 				085423FC2578A15600B45DF1 /* Extension + UIImage.swift in Sources */,
 				08D59C422589BC1F00BE5168 /* cellPassword.swift in Sources */,
@@ -375,6 +370,7 @@
 				088A2C50257E299300FB3EE3 /* ChangPassVC.swift in Sources */,
 				0885C497258201CD00DD8FBA /* API Manager + checkSession.swift in Sources */,
 				0847688D257BA855004D5680 /* SlideMenuController.swift in Sources */,
+				084E35502596D19F0017362D /* getFormattedDate.swift in Sources */,
 				085423D825789F3B00B45DF1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
