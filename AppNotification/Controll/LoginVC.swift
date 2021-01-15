@@ -17,20 +17,40 @@ class LoginVC: UIViewController {
         container.translatesAutoresizingMaskIntoConstraints = false
         return container
     }()
+    let topview: UIImageView = {
+        let topview = UIImageView()
+        topview.translatesAutoresizingMaskIntoConstraints = false
+        topview.image = UIImage(named: "Image-1")
+        return topview
+    }()
+    let topview1: UIImageView = {
+        let topview = UIImageView()
+        topview.translatesAutoresizingMaskIntoConstraints = false
+        topview.image = UIImage(named: "Image-2")
+        return topview
+    }()
+    let bottomview: UIImageView = {
+        let topview = UIImageView()
+        topview.translatesAutoresizingMaskIntoConstraints = false
+        topview.image = UIImage(named: "Image-4")
+        return topview
+    }()
     let welcome: UILabel = {
         let welcome = UILabel()
         welcome.translatesAutoresizingMaskIntoConstraints = false
         welcome.text = "WELCOME BACK APP NOTIFICATION"
         welcome.textAlignment = .center
-        welcome.textColor = UIColor(red:0.518, green:0.604, blue:1.000, alpha: 1.000)
-        welcome.font = UIFont.init(name: "Times New Roman", size: 34)
+//        welcome.textColor = UIColor(red:0.518, green:0.604, blue:1.000, alpha: 1.000)
+        welcome.textColor = UIColor.blue
+        welcome.font = UIFont.init(name: "TimesNewRomanPSMT", size: 34)
         welcome.numberOfLines = 0
         return welcome
     }()
     let dangNhapText: TextFieldEffects = {
         let dangnhap = KaedeTextField()
         dangnhap.translatesAutoresizingMaskIntoConstraints = false
-        dangnhap.setIcon(UIImage(named: "use")!)
+//        dangnhap.setIcon(UIImage(named: "use")!)
+        dangnhap.setIcon(UIImage(systemName: "person.fill")!)
         dangnhap.placeholder = "Mã Số Nhân Viên"
         dangnhap.backgroundColor = UIColor(red:1.000, green:1.000, blue:1.000, alpha: 1.000)
         dangnhap.leftViewMode = .unlessEditing
@@ -45,7 +65,7 @@ class LoginVC: UIViewController {
     let matkhatText: UITextField = {
         let dangnhap = KaedeTextField()
         dangnhap.translatesAutoresizingMaskIntoConstraints = false
-        dangnhap.setIcon(UIImage(named: "password")!)
+        dangnhap.setIcon(UIImage(systemName: "lock.fill")!)
         dangnhap.placeholder = "Mật Khẩu Của Bạn"
         dangnhap.backgroundColor = UIColor(red:1.000, green:1.000, blue:1.000, alpha: 1.000)
         dangnhap.leftViewMode = .unlessEditing
@@ -65,7 +85,7 @@ class LoginVC: UIViewController {
         dangnhap.backgroundColor = UIColor(red:0.518, green:0.604, blue:1.000, alpha: 1.000)
         dangnhap.setTitle("ĐĂNG NHẬP", for: .normal)
         dangnhap.setTitleColor(UIColor.white, for: .normal)
-        dangnhap.titleLabel?.font = UIFont.init(name: "Times New Roman", size: 24)
+        dangnhap.titleLabel?.font = UIFont.init(name: "TimesNewRomanPSMT", size: 24)
         dangnhap.layer.cornerRadius = 30
         dangnhap.clipsToBounds = true
         return dangnhap
@@ -76,16 +96,17 @@ class LoginVC: UIViewController {
 //        dangnhap.backgroundColor = UIColor(red:0.980, green:0.980, blue:0.980, alpha: 1.000)
         dangnhap.setTitle("Quên mật khẩu !", for: .normal)
         dangnhap.setTitleColor(UIColor(red:0.518, green:0.604, blue:1.000, alpha: 1.000), for: .normal)
-        dangnhap.titleLabel?.font = UIFont.init(name: "Times New Roman", size: 17)
+        dangnhap.titleLabel?.font = UIFont.init(name: "TimesNewRomanPSMT", size: 17)
         return dangnhap
     } ()
     let version: UILabel = {
         let welcome = UILabel()
         welcome.translatesAutoresizingMaskIntoConstraints = false
-        welcome.text = "Ver 1.0.0"
+        welcome.text = "Version 1.0.0"
         welcome.textAlignment = .center
-        welcome.textColor = UIColor(red:0.518, green:0.604, blue:1.000, alpha: 1.000)
-        welcome.font = UIFont.init(name: "Times New Roman", size: 17)
+//        welcome.textColor = UIColor(red:0.518, green:0.604, blue:1.000, alpha: 1.000)
+        welcome.textColor = UIColor.white
+        welcome.font = UIFont.init(name: "TimesNewRomanPSMT", size: 17)
         welcome.numberOfLines = 0
         welcome.layer.shadowColor = UIColor.black.cgColor
         welcome.layer.shadowOffset = CGSize(width: 20, height: 20)
@@ -106,8 +127,15 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor?.color(UIColor())
-        addSubView(); setLayout(); layer(); addTap()
-
+        addSubView(); setLayout(); layer();
+//        let gardiant = CAGradientLayer()
+//        gardiant.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+//        gardiant.colors = [UIColor.white.cgColor,UIColor.blue.withAlphaComponent(0.5).cgColor,UIColor.red.withAlphaComponent(0.3).cgColor]
+//        gardiant.locations = [0.0,0.5,0.5]
+//        containerView.layer.insertSublayer(gardiant, at: 0)
+        DispatchQueue.main.async {
+            self.addTap()
+        }
         
     }
     func addTap(){
@@ -116,9 +144,9 @@ class LoginVC: UIViewController {
     func layer(){
         containerView.layer.masksToBounds = false
         containerView.layer.shadowOffset = CGSize(width: 10, height: 10)
-        containerView.layer.shadowOpacity = 10
-        containerView.layer.shadowRadius = 10
-        containerView.layer.shadowColor = UIColor.lightGray.cgColor
+        containerView.layer.shadowOpacity = 5
+        containerView.layer.shadowRadius = 30
+        containerView.layer.shadowColor = UIColor.gray.cgColor
         
         stackView.layer.masksToBounds = false
         stackView.layer.shadowOffset = CGSize(width: 10, height: 10)
@@ -129,11 +157,14 @@ class LoginVC: UIViewController {
     func addSubView(){
         view.addSubview(containerView)
         containerView.addSubview(stackView)
+        containerView.addSubview(topview1)
+        containerView.addSubview(topview)
         stackView.addSubview(dangNhapText)
         stackView.addSubview(matkhatText)
         stackView.addSubview(dangNhapbtnLogin)
         containerView.addSubview(welcome)
-        containerView.addSubview(qmkButton)
+//        containerView.addSubview(qmkButton)
+        containerView.addSubview(bottomview)
         containerView.addSubview(version)
     }
     func setLayout(){
@@ -141,6 +172,16 @@ class LoginVC: UIViewController {
         containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        
+        topview.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive = true
+        topview.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0).isActive = true
+        topview.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0).isActive = true
+        topview.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        
+        topview1.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive = true
+        topview1.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0).isActive = true
+        topview1.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0).isActive = true
+        topview1.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         welcome.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 120).isActive = true
         welcome.leadingAnchor.constraint(equalTo:containerView.leadingAnchor, constant: margin).isActive = true
@@ -167,10 +208,15 @@ class LoginVC: UIViewController {
         dangNhapbtnLogin.trailingAnchor.constraint(equalTo: dangNhapText.trailingAnchor, constant: 0).isActive = true
         dangNhapbtnLogin.heightAnchor.constraint(equalTo: dangNhapText.heightAnchor, constant: 0).isActive = true
         
-        qmkButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor, constant: 0).isActive = true
-        qmkButton.widthAnchor.constraint(equalTo: qmkButton.widthAnchor, constant: 0).isActive = true
-        qmkButton.heightAnchor.constraint(equalTo: qmkButton.heightAnchor, constant: 0).isActive = true
-        qmkButton.bottomAnchor.constraint(equalTo: version.topAnchor, constant: -10).isActive = true
+//        qmkButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor, constant: 0).isActive = true
+//        qmkButton.widthAnchor.constraint(equalTo: qmkButton.widthAnchor, constant: 0).isActive = true
+//        qmkButton.heightAnchor.constraint(equalTo: qmkButton.heightAnchor, constant: 0).isActive = true
+//        qmkButton.bottomAnchor.constraint(equalTo: version.topAnchor, constant: -10).isActive = true
+        
+        bottomview.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 0).isActive = true
+        bottomview.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0).isActive = true
+        bottomview.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0).isActive = true
+        bottomview.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         version.heightAnchor.constraint(equalTo: version.heightAnchor).isActive = true
         version.leadingAnchor.constraint(equalTo:containerView.leadingAnchor, constant: margin).isActive = true
@@ -196,9 +242,13 @@ class LoginVC: UIViewController {
             let homeVC = UINavigationController(rootViewController: HomeVC())
             homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
             
-            let profile = UINavigationController(rootViewController: ProfileVC())
-            profile.tabBarItem = UITabBarItem(title: "Tài Khoản", image: UIImage(systemName: "gear"), tag: 1)
-            tabBC.setViewControllers([homeVC, profile], animated: true)
+//            let profile = UINavigationController(rootViewController: ProfileVC())
+//            profile.tabBarItem = UITabBarItem(title: "Tài Khoản", image: UIImage(systemName: "gear"), tag: 1)
+            
+            let homeprofile = UINavigationController(rootViewController: HomeProfileVC())
+            homeprofile.tabBarItem = UITabBarItem(title: "Cài Đặt", image: UIImage(systemName: "gear"), tag: 1)
+            tabBC.setViewControllers([homeVC,homeprofile], animated: true)
+            
             tabBC.modalPresentationStyle = .fullScreen
             tabBC.tabBar.barTintColor = .white
             strongSelf.present(tabBC, animated: true)

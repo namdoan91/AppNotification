@@ -86,7 +86,7 @@ class ChangPassVC: UIViewController {
         register.backgroundColor = UIColor(red:0.733, green:0.733, blue:0.733, alpha: 1.000)
         register.layer.cornerRadius = 15
         register.titleLabel?.font = UIFont.init(name: "Arial", size: 15)
-        register.isUserInteractionEnabled = false
+//        register.isUserInteractionEnabled = false
         return register
     }()
     override func viewDidLoad() {
@@ -94,7 +94,8 @@ class ChangPassVC: UIViewController {
 //        navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
 //        navigationController!.navigationBar.shadowImage = UIImage()
 //        navigationController?.navigationBar.isTranslucent = true
-        navigationItem.title = "Cập Nhật Mật Khẩu"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000),NSAttributedString.Key.font: UIFont(name: "Arial", size: 19)!]
+        title = "Cập Nhật Mật Khẩu"
        
 //        let bottomeLine = CALayer()
 //        bottomeLine.frame = CGRect(x: 0, y: titleOldPass.frame.height - 2, width: titleOldPass.frame.width, height: 2)
@@ -147,7 +148,7 @@ class ChangPassVC: UIViewController {
         container.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         container.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         
-        titleLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 0).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: container.layoutMarginsGuide.topAnchor, constant: 0).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true

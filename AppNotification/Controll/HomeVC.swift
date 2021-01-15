@@ -10,9 +10,10 @@ import Alamofire
 import SwiftyJSON
 import Kingfisher
 import WebKit
+import JXWebViewController
+import SVProgressHUD
 
-
-class HomeVC: UITableViewController, WKNavigationDelegate{
+class HomeVC: UITableViewController, WKNavigationDelegate {
     var isFirst: Bool = true
     deinit {
         print("Huỷ HomeViewController")
@@ -20,7 +21,6 @@ class HomeVC: UITableViewController, WKNavigationDelegate{
     
     var dataname: String!
     var imageurl:String!
-    var webview: WKWebView!
     var getNotification: getNotify?
     var checkSeSSion: checkSession!
     var content = [String]()
@@ -37,27 +37,28 @@ class HomeVC: UITableViewController, WKNavigationDelegate{
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000),NSAttributedString.Key.font: UIFont(name: "Arial", size: 22)!]
         navigationItem.title = "MVP APP - NOTIFICATION"
         tableView.register(cell.self, forCellReuseIdentifier: "cell")
-        tableView.separatorStyle = .singleLine
+        tableView.separatorStyle = .none
         checkSession()
         getNotify()
-        DispatchQueue.main.async {
-            self.loadinHubShow()
-        }
-    }
+        SVProgressHUD.show()
+        SVProgressHUD.setForegroundColor(UIColor(red:0.518, green:0.604, blue:1.000, alpha: 1.000))
 
-    func loadinHubShow() {
-        let alert = UIAlertController(title: nil, message: "Đang Tải Dữ Liệu ...!!!", preferredStyle: .alert)
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.color = .blue
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.medium
-        loadingIndicator.startAnimating();
-        alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+//        loadinHubShow()
     }
-    func loadinHubDismiss() {
-        dismiss(animated: false, completion: nil)
-    }
+//
+//    func loadinHubShow() {
+//        let alert = UIAlertController(title: nil, message: "Đang Tải Dữ Liệu ...!!!", preferredStyle: .alert)
+//        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+//        loadingIndicator.color = .blue
+//        loadingIndicator.hidesWhenStopped = true
+//        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+//        loadingIndicator.startAnimating();
+//        alert.view.addSubview(loadingIndicator)
+//        present(alert, animated: true, completion: nil)
+//    }
+//    func loadinHubDismiss() {
+//        dismiss(animated: false, completion: nil)
+//    }
     func checkSession(){
         ApiManager.shared.checkSession { [weak self] (_ data) in
             guard let strongSelf = self else {return}
@@ -72,8 +73,9 @@ class HomeVC: UITableViewController, WKNavigationDelegate{
     func getNotify(){
         ApiManager.shared.getNotify { [weak self] (_ data) in
             guard let strongSelf = self else {return}
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                strongSelf.loadinHubDismiss()
+            DispatchQueue.main.asyncAfter(deadline: .now()){
+                SVProgressHUD.showSuccess(withStatus: "Loading Dữ Liệu Thành Công.!!!!")
+//            SVProgressHUD.dismiss()
             }
             strongSelf.getNotification = data
             strongSelf.sourceRound.append((strongSelf.getNotification?.content)!)
@@ -92,6 +94,10 @@ class HomeVC: UITableViewController, WKNavigationDelegate{
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell" , for: indexPath) as! cell
+        let seperatorView = UIView.init(frame: CGRect(x: 30, y: cell.frame.size.height - 25, width: cell.frame.size.width - 90, height: 1))
+        seperatorView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
+        cell.selectionStyle = .none
+        cell.containerView.addSubview(seperatorView)
         DispatchQueue.main.asyncAfter(deadline: .now()){
             cell.titleNewLabel.text = self.content[indexPath.row]
             cell.titleNewLabel.textColor = UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000)
@@ -109,15 +115,18 @@ class HomeVC: UITableViewController, WKNavigationDelegate{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let indexPath = tableView.indexPathForSelectedRow
         let urls = linkUrl[indexPath!.row]
-        
+//
 //        let safari = SFSafariViewController(url: URL(string: urls)!)
 //        safari.delegate = self
+//        let navigationController = UINavigationController(rootViewController: safari)
+//        navigationController.modalPresentationStyle = .overFullScreen
+//        navigationController.setNavigationBarHidden(true, animated: true)
+//        self.present(navigationController, animated: true, completion: nil)
 //        self.present(safari, animated: true, completion : nil)
-        webview = WKWebView()
-        view = webview
-        webview.navigationDelegate = self
-        webview.load(URLRequest(url: URL(string: "\(urls)")!))
-        webview.allowsBackForwardNavigationGestures = true
+        let webview = JXWebViewController()
+        webview.webView.load(URLRequest(url: URL(string: urls)!))
+    
+        navigationController?.pushViewController(webview, animated: true)
         
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -134,7 +143,4 @@ class HomeVC: UITableViewController, WKNavigationDelegate{
             })
     }
 }
-
-
-
 

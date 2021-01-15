@@ -9,11 +9,13 @@ import UIKit
 import Kingfisher
 import SwiftyJSON
 import SkyFloatingLabelTextField
-import SafariServices
+import FirebaseMessaging
+import SVProgressHUD
+
 
 import WebKit
 
-class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewControllerDelegate{
+class ProfileVC: UITableViewController, WKNavigationDelegate , MessagingDelegate{
     deinit {
         print("Huỷ ProfileViewController")
     }
@@ -50,7 +52,7 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
             strongSelf.titleMSNV = strongSelf.dataProfile.username!
             strongSelf.tableView.reloadData()
             let longTitleLabel = UILabel()
-            longTitleLabel.text = "Tài khoản:"
+            longTitleLabel.text = "MSNV:"
             longTitleLabel.font = UIFont.init(name: "Arial", size: 30)
             longTitleLabel.sizeToFit()
             let leftItem1 = UIBarButtonItem(customView: longTitleLabel)
@@ -65,14 +67,11 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
             self.showAlert(alertText: code, alertMessage: "Thông Tin Đăng Nhập Lỗi.")
         }
     }
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        controller.dismiss(animated: true, completion: nil)
-    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         return groups.count
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 5
+        return 40
     }
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return nil;
@@ -95,13 +94,17 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
             cell.titleNewLabel.text = titleName
             cell.avatarTitle.setImage(urlString: avatarName)
             cell.nextImage.tintColor = .black
+            cell.backgroundColor = .white
+            cell.layer.cornerRadius = 15
             return cell
         }
         if indexPath.section == 1{
+            
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             cell1.nextImage.tintColor = .black
             let seperatorView = UIView.init(frame: CGRect(x: 70, y: cell1.frame.size.height, width: cell1.frame.size.width - 90, height: 1))
-            seperatorView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+            seperatorView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
+            cell1.selectionStyle = .none
             if indexPath.row == 0{
                 cell1.avatarTitle.image = UIImage(systemName: "lock.fill")
                 cell1.avatarTitle.tintColor = UIColor.white
@@ -110,6 +113,7 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
                 cell1.containerView.addSubview(seperatorView)
             }else{
                 cell1.avatarTitle.image = UIImage(systemName: "power")
+                cell1.avatarTitle.contentMode = .scaleToFill
                 cell1.avatarTitle.tintColor = UIColor.white
                 layer.colors = [UIColor(red: 0.431, green: 0.675, blue: 0.875, alpha: 1).cgColor, UIColor(red: 0.141, green: 0.247, blue: 0.463, alpha: 1).cgColor]
                 cell1.viewUI.layer.insertSublayer(layer, at: 0)
@@ -120,8 +124,8 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
         else{
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellPassword" , for: indexPath) as! cellPassword
             let seperatorView = UIView.init(frame: CGRect(x: 70, y: cell1.frame.size.height, width: cell1.frame.size.width - 90, height: 1))
-            seperatorView.backgroundColor = .lightGray
-            
+            seperatorView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
+            cell1.selectionStyle = .none
             cell1.nextImage.tintColor = .black
             if indexPath.row == 0{
                 cell1.avatarTitle.image = UIImage(systemName: "checkmark.shield.fill")
@@ -129,8 +133,6 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
                 layer.colors = [UIColor(red: 1, green: 0.494, blue: 0.482, alpha: 1).cgColor, UIColor(red: 1, green: 0.204, blue: 0, alpha: 1).cgColor]
                 cell1.viewUI.layer.insertSublayer(layer, at: 0)
                 cell1.containerView.addSubview(seperatorView)
-                cell1.backgroundColor = .yellow
-
             }else if indexPath.row == 1{
                 cell1.avatarTitle.image = UIImage(systemName: "book.fill")
                 cell1.avatarTitle.frame = CGRect(x: 10, y: 15, width: 30, height: 20)
@@ -138,7 +140,6 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
                 layer.colors = [UIColor(red: 1, green: 0.725, blue: 0.200, alpha: 1).cgColor, UIColor(red: 0.976, green: 0.408, blue: 0.114, alpha: 1).cgColor]
                 cell1.viewUI.layer.insertSublayer(layer, at: 0)
                 cell1.containerView.addSubview(seperatorView)
-                cell1.backgroundColor = .green
             }else if indexPath.row == 2{
                 cell1.avatarTitle.image = UIImage(systemName: "bubble.left.and.bubble.right.fill")
                 cell1.avatarTitle.frame = CGRect(x: 10, y: 15, width: 30, height: 20)
@@ -171,7 +172,12 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
             navigationController?.pushViewController(ChangPassVC(), animated: true)
         }else if indexPath.section == 1 && indexPath.row == 1{
             UserDefaults.standard.removeObject(forKey: "session_key")
-            
+            //            UserDefaults.standard.removeObject(forKey: "username")
+            let username = UserDefaults.standard.string(forKey: "username") ?? ""
+//            print("topic profilevc: \(UserDefaults.standard.string(forKey: "username") ?? "")")
+            UIApplication.shared.unregisterForRemoteNotifications()
+            Messaging.messaging().unsubscribe(fromTopic: "\(username)")
+            SVProgressHUD.dismiss()
             HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
             print("[WebCacheCleaner] All cookies deleted")
             WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
@@ -184,6 +190,7 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
             let window = UIApplication.shared.windows.first
             window?.rootViewController = loginVC
         }
+        
         if indexPath.section == 2 && indexPath.row == 0{
             navigationController?.pushViewController(TermsVC(), animated: true)
         }else if indexPath.row == 1{
@@ -201,5 +208,17 @@ class ProfileVC: UITableViewController, WKNavigationDelegate , SFSafariViewContr
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return UITableView.automaticDimension
         return 60
+    }
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.black
+        if section == 0{
+            header.textLabel?.text = "Tài Khoản"
+        } else if section == 1 {
+            header.textLabel?.text = "Cài Đặt"
+        }else {
+            header.textLabel?.text = "Điều Khoản và Trợ Giúp"
+        }
+        
     }
 }

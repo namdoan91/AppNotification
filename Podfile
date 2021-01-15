@@ -6,13 +6,14 @@ target 'AppNotification' do
   use_frameworks!
 
   # Pods for AppNotification
+	pod 'SVProgressHUD'
+	pod 'Firebase/Messaging'
+	pod 'Firebase', '7.3-M1' 	
 	pod 'Alamofire'
-	pod 'FoldingCell'
 	pod 'JXWebViewController'
+	pod 'MessageKit'
 	pod 'SwiftyJSON'
 	pod 'SkeletonView'
-	pod 'MaterialActivityIndicator'
-	pod 'EZProgressHUD'
 	pod 'TextFieldEffects'
 	pod 'SideMenu'
 	pod 'Kingfisher'

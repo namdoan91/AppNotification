@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import Firebase
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+@available(iOS 13.0, *)
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, MessagingDelegate {
     
     var window: UIWindow?
     
@@ -16,13 +18,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
+        AppDelegate.shared.window = window
      
 //        let tabBC = UITabBarController()
         let success = setupController()
         let sessionKey = UserDefaults.standard.string(forKey: "session_key") ?? ""
         print("lưu sessionkey ở scendelegate: \(sessionKey)")
+
         if !sessionKey.isEmpty{
-            window?.rootViewController = success
+            window?.rootViewController = Home()
         }else{
             window?.rootViewController = LoginVC()
         }
@@ -36,9 +40,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let homeVC = UINavigationController(rootViewController: HomeVC())
         homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
     
-        let profile = UINavigationController(rootViewController: ProfileVC())
-        profile.tabBarItem = UITabBarItem(title: "Tài Khoản", image: UIImage(systemName: "gear"), tag: 1)
-        tabBC.setViewControllers([homeVC, profile], animated: true)
+//        let profile = UINavigationController(rootViewController: ProfileVC())
+//        profile.tabBarItem = UITabBarItem(title: "Tài Khoản", image: UIImage(systemName: "gear"), tag: 1)
+        
+        let homeprofile = UINavigationController(rootViewController: HomeProfileVC())
+        homeprofile.tabBarItem = UITabBarItem(title: "Cài Đặt", image: UIImage(systemName: "gear"), tag: 1)
+        tabBC.setViewControllers([homeVC, homeprofile], animated: true)
         tabBC.tabBar.barTintColor = .white
         return tabBC
     }

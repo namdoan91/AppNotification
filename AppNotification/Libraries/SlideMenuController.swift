@@ -507,6 +507,8 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             }
         case UIGestureRecognizer.State.failed, UIGestureRecognizer.State.possible:
             break
+        default:
+            break
         }
         
         RightPanState.lastState = panGesture.state

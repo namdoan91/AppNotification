@@ -28,6 +28,7 @@ class cellProfile: UITableViewCell{
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
 //        view.backgroundColor = .cyan
+        view.clipsToBounds = true
         return view
     }()
     let avatarTitle: UIImageView = {
@@ -58,18 +59,18 @@ class cellProfile: UITableViewCell{
         super.setSelected(selected, animated: animated)
         addSub()
         setLayout()
-        containerView.layer.cornerRadius = 5
-        let seperatorView = UIView.init(frame: CGRect(x: 70, y: containerView.frame.size.height, width: containerView.frame.size.width - 90, height: 1))
-        seperatorView.backgroundColor = .lightGray
-        containerView.addSubview(seperatorView)
+        containerView.layer.cornerRadius = 15
+//        let seperatorView = UIView.init(frame: CGRect(x: 70, y: containerView.frame.size.height, width: containerView.frame.size.width - 90, height: 1))
+//        seperatorView.backgroundColor = .lightGray
+//        containerView.addSubview(seperatorView)
     }
     func addSub(){
         self.addSubview(containerView)
         containerView.addSubview(titleNewLabel)
-        containerView.addSubview(viewUI)
+//        containerView.addSubview(viewUI)
 //        viewUI.addSubview(avatarTitle)
         containerView.addSubview(avatarTitle)
-        containerView.addSubview(titleMSNV)
+//        containerView.addSubview(titleMSNV)
         containerView.addSubview(nextImage)
     
     }
@@ -78,17 +79,12 @@ class cellProfile: UITableViewCell{
         containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
         containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-        
-        viewUI.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
-        viewUI.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10).isActive = true
-        viewUI.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        viewUI.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        avatarTitle.centerYAnchor.constraint(equalTo: viewUI.centerYAnchor, constant: 0).isActive = true
-        avatarTitle.centerXAnchor.constraint(equalTo: viewUI.centerXAnchor, constant: 0).isActive = true
-        avatarTitle.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        avatarTitle.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
+
+        avatarTitle.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
+        avatarTitle.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10).isActive = true
+        avatarTitle.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        avatarTitle.heightAnchor.constraint(equalToConstant: 50).isActive = true
+
         titleNewLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: 0).isActive = true
         titleNewLabel.leadingAnchor.constraint(equalTo: avatarTitle.trailingAnchor, constant: 10).isActive = true
         

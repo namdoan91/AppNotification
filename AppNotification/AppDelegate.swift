@@ -6,11 +6,17 @@
 //
 
 import UIKit
+import Firebase
+import UserNotifications
+import FirebaseMessaging
+
+
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate{
-
-
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate{
+    var window: UIWindow?
+    static var shared: AppDelegate {return UIApplication.shared.delegate as! AppDelegate}
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -28,51 +34,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         // Set translucent. (Default value is already true, so this can be removed if desired.)
         UINavigationBar.appearance().isTranslucent = false
         
-        //set notification
-//        UNUserNotificationCenter.current()
-//            .requestAuthorization(options: [.alert, .sound, .badge]) {(granted, error) in
-//                // Make sure permission to receive push notifications is granted
-//                print("Permission is granted: \(granted)")
-//        }
-//        UNUserNotificationCenter.current().delegate = self
-        
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self //Nhận các message từ FirebaseMessaging
+        configApplePush(application)
         return true
     }
-//    func userNotificationCenter(_ center: UNUserNotificationCenter,
-//                                willPresent notification: UNNotification,
-//                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-//        print("Push notification received in foreground.")
-//        completionHandler([.sound, .badge])
-//    }
-//    func getNotificationSettings() {
-//      UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-//        print("Notification settings: (settings)")
-//        guard settings.authorizationStatus == .authorized else { return }
-//            UIApplication.shared.registerForRemoteNotifications()
-//      }
-//    }
-//    func registerForPushNotifications() {
-//      UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
-//        (granted, error) in
-//        print("Permission granted: (granted)")
-//
-//        guard granted else { return }
-//        self.getNotificationSettings()
-//      }
-//    }
-//    func application(_ application: UIApplication,
-//                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//      let tokenParts = deviceToken.map { data -> String in
-//        return String(format: "%02.2hhx", data)
-//      }
-//        let token = tokenParts.joined()
-//      print("Device Token: \(token)")
-//    }
-//
-//    func application(_ application: UIApplication,
-//                     didFailToRegisterForRemoteNotificationsWithError error: Error) {
-//      print("Failed to register: (error)")
-//    }
+    func configApplePush(_ application: UIApplication) {
+            if #available(iOS 10.0, *) {
+                UNUserNotificationCenter.current().delegate = self
+                let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+                UNUserNotificationCenter.current().requestAuthorization(
+                    options: authOptions,
+                    completionHandler: {_, _ in })
+            } else {
+                let settings: UIUserNotificationSettings =
+                    UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+                application.registerUserNotificationSettings(settings)
+            }
+            application.registerForRemoteNotifications()
+            if let token = Messaging.messaging().fcmToken {
+                print("FCM token: \(token)")
+//                UserDefaults.standard.setValue(token, forKey: "fcmToken")
+//                print("token fcm ở app delegate: \(UserDefaults.standard.setValue(token, forKey: "fcmToken"))")
+//                AppSession.shared.setFirebaseToken(token)
+            }
+        }
+
 
     // MARK: UISceneSession Lifecycle
 
@@ -87,6 +74,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
+//        let username = UserDefaults.standard.string(forKey: "username") ?? ""
+//        Messaging.messaging().subscribe(toTopic: "\(username)")
+//        print("username ở Appdelegate: \(username)")
+//        print("đã subscribe \(Messaging.messaging().subscribe(toTopic: "\(username)"))")
+
+    }
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+           //Nhận được fcmToken,lưu lại và gửi lên back-end khi làm app thực tế
+//        let dataDict:[String: String] = ["token": fcmToken ?? ""]
+//          NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+          // TODO: If necessary send token to application server.
+          // Note: This callback is fired at each app startup and whenever a new token is generated.
+       }
+       
+       func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+           //Nhận được fcmToken,lưu lại và gửi lên back-end khi làm app thực tế
+//        let dataDict:[String: String] = ["token": fcmToken ]
+//          NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+        
+       }
+
 
 
 }
