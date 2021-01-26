@@ -82,6 +82,7 @@ class HomeProfileVC: UIViewController,WKNavigationDelegate, MessagingDelegate {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.backgroundColor = .clear
         title = "Home Profile"
+        SVProgressHUD.dismiss()
         addSub();setLayout()
         DispatchQueue.main.async {
             self.checkSession()

@@ -242,12 +242,12 @@ class LoginVC: UIViewController {
             let homeVC = UINavigationController(rootViewController: HomeVC())
             homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
             
-//            let profile = UINavigationController(rootViewController: ProfileVC())
-//            profile.tabBarItem = UITabBarItem(title: "Tài Khoản", image: UIImage(systemName: "gear"), tag: 1)
+            let home = UINavigationController(rootViewController: Home())
+            home.tabBarItem = UITabBarItem(title: "Home2", image: UIImage(systemName: "gear"), tag: 2)
             
             let homeprofile = UINavigationController(rootViewController: HomeProfileVC())
             homeprofile.tabBarItem = UITabBarItem(title: "Cài Đặt", image: UIImage(systemName: "gear"), tag: 1)
-            tabBC.setViewControllers([homeVC,homeprofile], animated: true)
+            tabBC.setViewControllers([homeVC,homeprofile, home], animated: true)
             
             tabBC.modalPresentationStyle = .fullScreen
             tabBC.tabBar.barTintColor = .white

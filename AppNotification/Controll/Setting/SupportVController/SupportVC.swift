@@ -14,7 +14,7 @@ class SupportVC: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(cellSupport.self, forCellReuseIdentifier: "cellSupport")
+      tableView.register(cellSupport.self, forCellReuseIdentifier: "cellSupport")
         navigationItem.title = "Hỗ trợ"
         view.backgroundColor = .white
         tableView.separatorStyle = .none

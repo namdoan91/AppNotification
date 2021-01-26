@@ -87,6 +87,7 @@ class HomeVC: UITableViewController, WKNavigationDelegate {
             strongSelf.tableView.reloadData()
         } failure: { (code) in
             self.showAlert(alertText: "Lỗi....!!!!!", alertMessage: "Không lấy được thông tin")
+            SVProgressHUD.dismiss()
         }
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -125,9 +126,7 @@ class HomeVC: UITableViewController, WKNavigationDelegate {
 //        self.present(safari, animated: true, completion : nil)
         let webview = JXWebViewController()
         webview.webView.load(URLRequest(url: URL(string: urls)!))
-    
         navigationController?.pushViewController(webview, animated: true)
-        
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return UITableView.automaticDimension
