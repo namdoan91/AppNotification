@@ -7,16 +7,16 @@ target 'AppNotification' do
 
   # Pods for AppNotification
 	pod 'SVProgressHUD'
-	pod 'Firebase/Messaging'
 	pod 'Firebase', '7.3-M1' 	
 	pod 'Alamofire'
 	pod 'JXWebViewController'
 	pod 'MessageKit'
 	pod 'SwiftyJSON'
-	pod 'SkeletonView'
 	pod 'TextFieldEffects'
-	pod 'SideMenu'
 	pod 'Kingfisher'
-	pod 'SwiftEntryKit'
 	pod 'SkyFloatingLabelTextField'
+	pod 'ALWebViewController'
+	pod 'Firebase/Messaging'
+	pod 'SDWebImage'
+	pod 'EasyNotificationBadge'
 end

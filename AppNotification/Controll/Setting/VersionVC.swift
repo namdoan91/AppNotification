@@ -77,7 +77,9 @@ class VersionVC: UIViewController {
         addSub(); setlayOut()
         let gardiant = CAGradientLayer()
         gardiant.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        gardiant.colors = [UIColor.white.cgColor,UIColor.blue.withAlphaComponent(0.3).cgColor]
+        gardiant.colors = [UIColor(red: 102.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0).cgColor,UIColor(red: 102.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0).cgColor]
+        gardiant.startPoint = CGPoint(x: 0, y: 1)
+        gardiant.endPoint = CGPoint(x: 1, y: 1)
         ScrollView.layer.insertSublayer(gardiant, at: 0)
         logoUIView.layer.masksToBounds = true
         logoUIView.layer.cornerRadius = 15

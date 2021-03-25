@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import TextFieldEffects
+import SVProgressHUD
 
 class LoginVC: UIViewController {
     let containerView: UIView = {
@@ -40,7 +41,6 @@ class LoginVC: UIViewController {
         welcome.translatesAutoresizingMaskIntoConstraints = false
         welcome.text = "WELCOME BACK APP NOTIFICATION"
         welcome.textAlignment = .center
-//        welcome.textColor = UIColor(red:0.518, green:0.604, blue:1.000, alpha: 1.000)
         welcome.textColor = UIColor.blue
         welcome.font = UIFont.init(name: "TimesNewRomanPSMT", size: 34)
         welcome.numberOfLines = 0
@@ -49,7 +49,6 @@ class LoginVC: UIViewController {
     let dangNhapText: TextFieldEffects = {
         let dangnhap = KaedeTextField()
         dangnhap.translatesAutoresizingMaskIntoConstraints = false
-//        dangnhap.setIcon(UIImage(named: "use")!)
         dangnhap.setIcon(UIImage(systemName: "person.fill")!)
         dangnhap.placeholder = "Mã Số Nhân Viên"
         dangnhap.backgroundColor = UIColor(red:1.000, green:1.000, blue:1.000, alpha: 1.000)
@@ -93,7 +92,6 @@ class LoginVC: UIViewController {
     let qmkButton: UIButton = {
         let dangnhap = UIButton()
         dangnhap.translatesAutoresizingMaskIntoConstraints = false
-//        dangnhap.backgroundColor = UIColor(red:0.980, green:0.980, blue:0.980, alpha: 1.000)
         dangnhap.setTitle("Quên mật khẩu !", for: .normal)
         dangnhap.setTitleColor(UIColor(red:0.518, green:0.604, blue:1.000, alpha: 1.000), for: .normal)
         dangnhap.titleLabel?.font = UIFont.init(name: "TimesNewRomanPSMT", size: 17)
@@ -104,7 +102,6 @@ class LoginVC: UIViewController {
         welcome.translatesAutoresizingMaskIntoConstraints = false
         welcome.text = "Version 1.0.0"
         welcome.textAlignment = .center
-//        welcome.textColor = UIColor(red:0.518, green:0.604, blue:1.000, alpha: 1.000)
         welcome.textColor = UIColor.white
         welcome.font = UIFont.init(name: "TimesNewRomanPSMT", size: 17)
         welcome.numberOfLines = 0
@@ -112,7 +109,6 @@ class LoginVC: UIViewController {
         welcome.layer.shadowOffset = CGSize(width: 20, height: 20)
         return welcome
     }()
-    
     let stackView: UIStackView = {
         let stackview = UIStackView()
         stackview.translatesAutoresizingMaskIntoConstraints = false
@@ -123,21 +119,19 @@ class LoginVC: UIViewController {
         return stackview
     }()
     let margin:CGFloat = 15
+    var getNotification: getNotify?
+    var is_seen = [String]()
+    var isseen = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor?.color(UIColor())
         addSubView(); setLayout(); layer();
-//        let gardiant = CAGradientLayer()
-//        gardiant.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-//        gardiant.colors = [UIColor.white.cgColor,UIColor.blue.withAlphaComponent(0.5).cgColor,UIColor.red.withAlphaComponent(0.3).cgColor]
-//        gardiant.locations = [0.0,0.5,0.5]
-//        containerView.layer.insertSublayer(gardiant, at: 0)
         DispatchQueue.main.async {
             self.addTap()
         }
-        
     }
+    //MARK: -- TAP DANG NHAP
     func addTap(){
         dangNhapbtnLogin.addTarget(self, action: #selector(btnLogin), for: .touchUpInside)
     }
@@ -225,6 +219,19 @@ class LoginVC: UIViewController {
         
         
     }
+    //MARK: --GET NOTIFI TU SV
+    func getNotify(){
+        ApiManager.shared.getNotify { [weak self] (_ data) in
+            guard let strongSelf = self else {return}
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                SVProgressHUD.dismiss()
+            }
+            strongSelf.getNotification = data
+            strongSelf.is_seen.append((strongSelf.getNotification?.isSeen)!)
+        } failure: { (code) in
+            self.showAlert(alertText: "Lỗi....!!!!!", alertMessage: "Không lấy được thông tin")
+        }
+    }
 // MARK: -- đăng nhập API
     @objc func btnLogin(){
         let dangnhap = self.dangNhapText.text! ; let matkhau = self.matkhatText.text!
@@ -233,25 +240,27 @@ class LoginVC: UIViewController {
         }
         print("da tap")
         Login(dangnhap, matkhau)
-   
     }
     func Login(_ DangNhap: String,_ MatKhau: String){
         ApiManager.shared.loginAPP(DangNhap: DangNhap, MatKhau: MatKhau) { [weak self] in
             guard let strongSelf = self else {return}
+            ApiManager.shared.getNotify { [weak self] (_ data) in
+                guard let strongSelf = self else {return}
+                strongSelf.getNotification = data
+            } failure: { (code) in
+                return
+            }
             let tabBC = UITabBarController()
-            let homeVC = UINavigationController(rootViewController: HomeVC())
-            homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
-            
             let home = UINavigationController(rootViewController: Home())
-            home.tabBarItem = UITabBarItem(title: "Home2", image: UIImage(systemName: "gear"), tag: 2)
+            home.tabBarItem = UITabBarItem(title: "Trang Chủ", image: UIImage(systemName: "house.fill"), tag: 0)
             
             let homeprofile = UINavigationController(rootViewController: HomeProfileVC())
             homeprofile.tabBarItem = UITabBarItem(title: "Cài Đặt", image: UIImage(systemName: "gear"), tag: 1)
-            tabBC.setViewControllers([homeVC,homeprofile, home], animated: true)
-            
+            tabBC.setViewControllers([home, homeprofile], animated: true)
             tabBC.modalPresentationStyle = .fullScreen
             tabBC.tabBar.barTintColor = .white
             strongSelf.present(tabBC, animated: true)
+            
         } failure: { (msg) in
             self.showAlert(alertText: "--**Lỗi**--", alertMessage: "Lỗi Đăng Nhập. \n Vui Lòng Thử Lại!")
         }

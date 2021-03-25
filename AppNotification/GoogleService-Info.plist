@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>4688394373-tu32qpgcnj46voc3j3vnui72tll2cc51.apps.googleusercontent.com</string>
+	<string>892281130930-v23uijhau6lholov6n1tfa8vj3kvf8tf.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.4688394373-tu32qpgcnj46voc3j3vnui72tll2cc51</string>
+	<string>com.googleusercontent.apps.892281130930-v23uijhau6lholov6n1tfa8vj3kvf8tf</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDn27Ji_UBZsUlst_B8m-q-Lj1M5ZddxA0</string>
+	<string>AIzaSyBIj1NE13S4aUbpHDlDFS_64WAvBx7D2cw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>4688394373</string>
+	<string>892281130930</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.marueivn.AppNotification1</string>
+	<string>com.mvp.AppNotification</string>
 	<key>PROJECT_ID</key>
-	<string>mvp-app-notification</string>
+	<string>mvp-notify</string>
 	<key>STORAGE_BUCKET</key>
-	<string>mvp-app-notification.appspot.com</string>
+	<string>mvp-notify.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:4688394373:ios:59f747eb29675c1f7511ec</string>
+	<string>1:892281130930:ios:f6ad7a6773be52e80a9eab</string>
 </dict>
 </plist>

@@ -13,6 +13,9 @@ import SVProgressHUD
 import WebKit
 
 class HomeProfileVC: UIViewController,WKNavigationDelegate, MessagingDelegate {
+    deinit {
+        print("Huỷ Profle ViewController")
+    }
     let containerView: UIView = {
         let container = UIView()
         container.backgroundColor = UIColor.white
@@ -25,7 +28,6 @@ class HomeProfileVC: UIViewController,WKNavigationDelegate, MessagingDelegate {
         topview.image = UIImage(named: "Image-1")
         return topview
     }()
-    
     let topview1: UIImageView = {
         let topview = UIImageView()
         topview.translatesAutoresizingMaskIntoConstraints = false
@@ -54,7 +56,8 @@ class HomeProfileVC: UIViewController,WKNavigationDelegate, MessagingDelegate {
     let infoView: UIImageView = {
         let topview = UIImageView()
         topview.translatesAutoresizingMaskIntoConstraints = false
-        topview.image = UIImage(named: "Image-5")?.withTintColor(UIColor.black.withAlphaComponent(0.7))
+        topview.image = UIImage(systemName: "pencil.circle")
+        topview.tintColor = .black
         topview.backgroundColor = .white
         topview.layer.cornerRadius = 15
         topview.contentMode = .scaleAspectFit
@@ -90,13 +93,13 @@ class HomeProfileVC: UIViewController,WKNavigationDelegate, MessagingDelegate {
         tableView.register(cellProfile.self, forCellReuseIdentifier: "cellProfile")
         tableView.register(cellPassword.self, forCellReuseIdentifier: "cellPassword")
         tableView.separatorStyle = .none
-        tableView.isScrollEnabled = false
+        tableView.isScrollEnabled = true
         tableView.backgroundColor = .white
         tableView.layer.cornerRadius = 15
         tableView.dataSource = self
         tableView.delegate = self
-        avatarTitle.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(profilename)))
-        avatarTitle.isUserInteractionEnabled = true
+        infoView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(profilename)))
+        infoView.isUserInteractionEnabled = true
     }
 
     func addSub(){
@@ -142,6 +145,7 @@ class HomeProfileVC: UIViewController,WKNavigationDelegate, MessagingDelegate {
         tableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5).isActive = true
         tableView.bottomAnchor.constraint(equalTo: containerView.layoutMarginsGuide.bottomAnchor, constant: 0).isActive = true
     }
+    //MARK: -- CHECK LẠI SESSION
     func checkSession(){
         ApiManager.shared.checkSession { [weak self] (_ data) in
             guard let strongSelf = self else {return}
@@ -165,6 +169,7 @@ class HomeProfileVC: UIViewController,WKNavigationDelegate, MessagingDelegate {
         navigationItem.backButtonTitle = "Quay Lại"
     }
 }
+//MARK: -- ADD DELEGATE VS DATASOURCE
 extension HomeProfileVC: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return groups.count
@@ -253,7 +258,7 @@ extension HomeProfileVC: UITableViewDelegate, UITableViewDataSource{
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationItem.backButtonTitle = "Quay Lại"
+        navigationItem.backButtonTitle = "Back"
         if indexPath.section == 0 && indexPath.row == 0{
             navigationController?.pushViewController(ChangPassVC(), animated: true)
         }else if indexPath.section == 0 && indexPath.row == 1{
@@ -261,6 +266,7 @@ extension HomeProfileVC: UITableViewDelegate, UITableViewDataSource{
             let username = UserDefaults.standard.string(forKey: "username") ?? ""
             UIApplication.shared.unregisterForRemoteNotifications()
             Messaging.messaging().unsubscribe(fromTopic: "\(username)")
+            Messaging.messaging().unsubscribe(fromTopic: "ALL")
             SVProgressHUD.dismiss()
             HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
             print("[WebCacheCleaner] All cookies deleted")
@@ -274,7 +280,6 @@ extension HomeProfileVC: UITableViewDelegate, UITableViewDataSource{
             let window = UIApplication.shared.windows.first
             window?.rootViewController = loginVC
         }
-        
         if indexPath.section == 1 && indexPath.row == 0{
             navigationController?.pushViewController(TermsVC(), animated: true)
         }else if indexPath.row == 1{

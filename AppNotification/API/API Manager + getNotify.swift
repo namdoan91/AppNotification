@@ -15,11 +15,8 @@ extension ApiManager{
     func getNotify(success: @escaping (getNotify?) -> Void, failure: @escaping (String) -> Void){
         let sessionKey = UserDefaults.standard.string(forKey: "session_key") ?? ""
         let par = ["session_key" : sessionKey]
-        let url = "https://observant-melon-zebra.glitch.me/getNotification"
-//        AF.request(APINameManager.shared.returnUrl(APINameManager.shared.getNotify), method: .post, parameters: par).responseJSON{
-//            response in
-                AF.request(url, method: .post, parameters: par).responseJSON{
-                    response in
+        AF.request(APINameManager.shared.returnUrl(APINameManager.shared.getNotify), method: .post, parameters: par).responseJSON{
+            response in
             switch response.result{
             case .success(let value):
                 let json = JSON(value)
@@ -40,3 +37,4 @@ extension ApiManager{
         }
     }
 }
+

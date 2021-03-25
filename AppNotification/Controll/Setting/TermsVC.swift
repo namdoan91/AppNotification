@@ -54,6 +54,7 @@ class TermsVC: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000),NSAttributedString.Key.font: UIFont(name: "Arial", size: 19)!]
         navigationItem.title = "Chính sách và điều khoản"
+        
         view.backgroundColor = .white
         addSub(); setlayOut()
     }

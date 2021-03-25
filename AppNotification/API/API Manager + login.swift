@@ -19,7 +19,7 @@ extension ApiManager{
             switch response.result{
             case .success(let value):
                 let json = JSON(value)
-                print(json)
+//                print(json)
                 let code = json["CODE"].stringValue
                     if code == "SUCCESS"{
                         let sessionKey = json["session_key"].stringValue
@@ -31,6 +31,7 @@ extension ApiManager{
 //                        UserDefaults.standard.string(forKey: "username")
                         UIApplication.shared.registerForRemoteNotifications()
                         Messaging.messaging().subscribe(toTopic: "\(username)")
+                        Messaging.messaging().subscribe(toTopic: "ALL")
 //                        print("username đã lưu : \(UserDefaults.standard.string(forKey: "username") ?? "")")
                         success()
                     }else{

@@ -26,7 +26,7 @@ class HomeVC: UITableViewController, WKNavigationDelegate {
     var content = [String]()
     var id = [Int]()
     var linkUrl = [String]()
-    var is_seen = [Int]()
+    var is_seen = [String]()
     var imageviewCell: UIImageView!
     var sourceRound = [String]()
     var timer = [String]()
@@ -78,7 +78,7 @@ class HomeVC: UITableViewController, WKNavigationDelegate {
 //            SVProgressHUD.dismiss()
             }
             strongSelf.getNotification = data
-            strongSelf.sourceRound.append((strongSelf.getNotification?.content)!)
+            strongSelf.sourceRound.append((strongSelf.getNotification?.messege)!)
             strongSelf.id.append((strongSelf.getNotification?.id)!)
             strongSelf.linkUrl.append((strongSelf.getNotification?.link)!)
             strongSelf.is_seen.append((strongSelf.getNotification?.isSeen)!)
@@ -104,7 +104,7 @@ class HomeVC: UITableViewController, WKNavigationDelegate {
             cell.titleNewLabel.textColor = UIColor(red:0.086, green:0.510, blue:0.973, alpha: 1.000)
             cell.contentLabel.text = self.sourceRound[indexPath.row]
             cell.timerLabel.text = self.timer[indexPath.row]
-            if self.is_seen[indexPath.row] == 0{
+            if self.is_seen[indexPath.row] == "N"{
                 cell.issue.backgroundColor = .lightGray
             }else {
                 cell.issue.backgroundColor = .clear

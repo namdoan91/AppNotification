@@ -26,7 +26,7 @@ class ProfileName: UIViewController {
         stackview.translatesAutoresizingMaskIntoConstraints = false
         stackview.layer.cornerRadius = 20
         stackview.clipsToBounds = true
-        stackview.backgroundColor = UIColor(red: 0.33, green: 0.64, blue: 0.94, alpha: 1.00)
+//        stackview.backgroundColor = UIColor(red: 0.33, green: 0.64, blue: 0.94, alpha: 1.00)
         return stackview
     }()
     
@@ -37,6 +37,12 @@ class ProfileName: UIViewController {
         stackview.clipsToBounds = true
         stackview.backgroundColor = UIColor.white
         return stackview
+    }()
+    let scrollView: UIScrollView = {
+        let scroollview = UIScrollView()
+        scroollview.translatesAutoresizingMaskIntoConstraints = false
+//        scroollview.backgroundColor = .lightGray
+        return scroollview
     }()
     let logoAvatar: UIImageView = {
         let logo = UIImageView()
@@ -180,6 +186,14 @@ class ProfileName: UIViewController {
         navigationController?.navigationBar.backgroundColor = .clear
 //        view.backgroundColor = .white
         navigationItem.title = "Thông Tin Tài Khoản"
+        let layer = CAGradientLayer()
+        layer.colors = [UIColor(red: 0.21, green: 0.82, blue: 0.86, alpha: 1.00).cgColor,
+                        UIColor(red: 0.36, green: 0.53, blue: 0.90, alpha: 1.00).cgColor]
+        layer.frame = stackview.bounds
+        layer.startPoint = CGPoint(x: 0, y: 1)
+        layer.endPoint = CGPoint(x: 1, y: 1)
+        stackview.layer.insertSublayer(layer, at: 0)
+//        view.backgroundColor = .clear
         addsub();setLayout()
         DispatchQueue.main.async {
             self.checkSession()
@@ -203,19 +217,21 @@ class ProfileName: UIViewController {
         view.addSubview(containerview)
         containerview.addSubview(stackview)
         containerview.addSubview(stackview2)
+        
         stackview.addSubview(logoAvatar)
         stackview.addSubview(titleUserName)
         
-        stackview2.addSubview(titleDangNhap)
-        stackview2.addSubview(titletenDangNhap)
-        stackview2.addSubview(titlename)
-        stackview2.addSubview(titleUserName2)
-        stackview2.addSubview(titlephone)
-        stackview2.addSubview(titlePhone)
-        stackview2.addSubview(titlenmail)
-        stackview2.addSubview(titleEmail)
-        stackview2.addSubview(titleaddress)
-        stackview2.addSubview(addressTest)
+        stackview2.addSubview(scrollView)
+        scrollView.addSubview(titleDangNhap)
+        scrollView.addSubview(titletenDangNhap)
+        scrollView.addSubview(titlename)
+        scrollView.addSubview(titleUserName2)
+        scrollView.addSubview(titlephone)
+        scrollView.addSubview(titlePhone)
+        scrollView.addSubview(titlenmail)
+        scrollView.addSubview(titleEmail)
+        scrollView.addSubview(titleaddress)
+        scrollView.addSubview(addressTest)
     }
     func setLayout(){
         containerview.topAnchor.constraint(equalTo:view.topAnchor, constant: 0).isActive = true
@@ -244,57 +260,61 @@ class ProfileName: UIViewController {
         stackview2.trailingAnchor.constraint(equalTo: containerview.trailingAnchor, constant: -20).isActive = true
         stackview2.bottomAnchor.constraint(equalTo:view.layoutMarginsGuide.bottomAnchor, constant: -10).isActive = true
         
-        titleDangNhap.topAnchor.constraint(equalTo: stackview2.topAnchor, constant: 20).isActive = true
-        titleDangNhap.leadingAnchor.constraint(equalTo: stackview2.leadingAnchor, constant: 15).isActive = true
-        titleDangNhap.trailingAnchor.constraint(equalTo:stackview2.trailingAnchor,constant: -15).isActive = true
+        scrollView.topAnchor.constraint(equalTo: stackview.bottomAnchor, constant:  30).isActive = true
+        scrollView.leadingAnchor.constraint(equalTo: containerview.leadingAnchor, constant: 20).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: containerview.trailingAnchor, constant: -20).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo:view.layoutMarginsGuide.bottomAnchor, constant: -10).isActive = true
+        
+        titleDangNhap.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20).isActive = true
+        titleDangNhap.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15).isActive = true
+        titleDangNhap.trailingAnchor.constraint(equalTo:scrollView.trailingAnchor,constant: -15).isActive = true
         titleDangNhap.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         titletenDangNhap.topAnchor.constraint(equalTo: titleDangNhap.bottomAnchor, constant: 5).isActive = true
-        titletenDangNhap.leadingAnchor.constraint(equalTo: stackview2.leadingAnchor, constant: 15).isActive = true
-        titletenDangNhap.trailingAnchor.constraint(equalTo:stackview2.trailingAnchor,constant: -15).isActive = true
+        titletenDangNhap.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15).isActive = true
+        titletenDangNhap.trailingAnchor.constraint(equalTo:scrollView.trailingAnchor,constant: -15).isActive = true
         titletenDangNhap.heightAnchor.constraint(equalTo:titleDangNhap.heightAnchor).isActive = true
         
         titlename.topAnchor.constraint(equalTo: titletenDangNhap.bottomAnchor, constant: 10).isActive = true
-        titlename.leadingAnchor.constraint(equalTo: stackview2.leadingAnchor, constant: 15).isActive = true
-        titlename.trailingAnchor.constraint(equalTo:stackview2.trailingAnchor,constant: -15).isActive = true
+        titlename.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15).isActive = true
+        titlename.trailingAnchor.constraint(equalTo:scrollView.trailingAnchor,constant: -15).isActive = true
         titlename.heightAnchor.constraint(equalToConstant: 30).isActive = true
     
         titleUserName2.topAnchor.constraint(equalTo: titlename.bottomAnchor, constant: 5).isActive = true
-        titleUserName2.leadingAnchor.constraint(equalTo: stackview2.leadingAnchor, constant: 15).isActive = true
-        titleUserName2.trailingAnchor.constraint(equalTo:stackview2.trailingAnchor,constant: -15).isActive = true
+        titleUserName2.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15).isActive = true
+        titleUserName2.trailingAnchor.constraint(equalTo:scrollView.trailingAnchor,constant: -15).isActive = true
         titleUserName2.heightAnchor.constraint(equalTo:titlename.heightAnchor).isActive = true
         
         titlephone.topAnchor.constraint(equalTo: titleUserName2.bottomAnchor, constant: 10).isActive = true
-        titlephone.leadingAnchor.constraint(equalTo: stackview2.leadingAnchor, constant: 15).isActive = true
-        titlephone.trailingAnchor.constraint(equalTo:stackview2.trailingAnchor,constant: -15).isActive = true
+        titlephone.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15).isActive = true
+        titlephone.trailingAnchor.constraint(equalTo:scrollView.trailingAnchor,constant: -15).isActive = true
         titlephone.heightAnchor.constraint(equalTo: titlename.heightAnchor).isActive = true
 
         titlePhone.topAnchor.constraint(equalTo: titlephone.bottomAnchor, constant:  5).isActive = true
-        titlePhone.leadingAnchor.constraint(equalTo: stackview2.leadingAnchor, constant: 15).isActive = true
-        titlePhone.trailingAnchor.constraint(equalTo:stackview2.trailingAnchor,constant: -15).isActive = true
+        titlePhone.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15).isActive = true
+        titlePhone.trailingAnchor.constraint(equalTo:scrollView.trailingAnchor,constant: -15).isActive = true
         titlePhone.heightAnchor.constraint(equalTo:titlename.heightAnchor).isActive = true
         
         titlenmail.topAnchor.constraint(equalTo: titlePhone.bottomAnchor, constant: 10).isActive = true
-        titlenmail.leadingAnchor.constraint(equalTo: stackview2.leadingAnchor, constant: 15).isActive = true
-        titlenmail.trailingAnchor.constraint(equalTo:stackview2.trailingAnchor,constant: -15).isActive = true
+        titlenmail.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15).isActive = true
+        titlenmail.trailingAnchor.constraint(equalTo:scrollView.trailingAnchor,constant: -15).isActive = true
         titlenmail.heightAnchor.constraint(equalTo: titlename.heightAnchor).isActive = true
         
         titleEmail.topAnchor.constraint(equalTo: titlenmail.bottomAnchor, constant:  5).isActive = true
-        titleEmail.leadingAnchor.constraint(equalTo: stackview2.leadingAnchor, constant: 15).isActive = true
-        titleEmail.trailingAnchor.constraint(equalTo: stackview2.trailingAnchor, constant: -15).isActive = true
+        titleEmail.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15).isActive = true
+        titleEmail.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -15).isActive = true
         titleEmail.heightAnchor.constraint(equalTo:titlename.heightAnchor).isActive = true
         
         titleaddress.topAnchor.constraint(equalTo: titleEmail.bottomAnchor, constant: 10).isActive = true
-        titleaddress.leadingAnchor.constraint(equalTo: stackview2.leadingAnchor, constant: 15).isActive = true
-        titleaddress.trailingAnchor.constraint(equalTo:stackview2.trailingAnchor,constant: -15).isActive = true
+        titleaddress.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15).isActive = true
+        titleaddress.trailingAnchor.constraint(equalTo:scrollView.trailingAnchor,constant: -15).isActive = true
         titleaddress.heightAnchor.constraint(equalTo: titlename.heightAnchor).isActive = true
 
         addressTest.topAnchor.constraint(equalTo: titleaddress.bottomAnchor, constant:  5).isActive = true
-        addressTest.trailingAnchor.constraint(equalTo: stackview2.trailingAnchor, constant: -15).isActive = true
-        addressTest.leadingAnchor.constraint(equalTo: stackview2.leadingAnchor, constant: 15).isActive = true
+        addressTest.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -15).isActive = true
+        addressTest.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15).isActive = true
         addressTest.heightAnchor.constraint(equalTo:addressTest.heightAnchor).isActive = true
-
-        
+        addressTest.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0).isActive = true
     }
     
     
