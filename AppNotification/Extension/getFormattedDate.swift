@@ -23,8 +23,6 @@ extension String {
             let newDateString = toDateFormatter.string(from: fromDateObject)
             return newDateString
         }
-
         return nil
     }
-
 }

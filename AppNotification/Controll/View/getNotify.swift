@@ -31,4 +31,5 @@ class getNotify {
         updatedAt = json["updated_at"].stringValue
         createdAtFormat = json["created_at_format"].stringValue
     }
+    
 }

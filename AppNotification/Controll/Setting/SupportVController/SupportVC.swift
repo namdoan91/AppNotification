@@ -2,37 +2,59 @@
 //  SupportVC.swift
 //  AppNotification
 //
-//  Created by namit on 21/12/2020.
+//  Created by namitMacOs on 29/03/2021.
 //
 
 import UIKit
+import MessageKit
 
+class SupportVC: UIViewController {
 
-class SupportVC: UITableViewController {
-    deinit {
-        print("Huỷ SupportVCViewController")
-    }
+    
+    let tableViewChat: UITableView = {
+        let tableviewchat = UITableView()
+        tableviewchat.translatesAutoresizingMaskIntoConstraints = false
+        return tableviewchat
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-      tableView.register(cellSupport.self, forCellReuseIdentifier: "cellSupport")
-        navigationItem.title = "Hỗ trợ"
         view.backgroundColor = .white
-        tableView.separatorStyle = .none
+        addSub();layOut()
+        title = "Hỗ Trợ"
+        tableViewChat.register(cellSupport.self, forCellReuseIdentifier: "cellSupport")
+        tableViewChat.delegate = self
+        tableViewChat.dataSource = self
     }
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    
+    func addSub(){
+        view.addSubview(tableViewChat)
+    }
+    func layOut(){
+        tableViewChat.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 0).isActive = true
+        tableViewChat.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        tableViewChat.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        tableViewChat.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: 0).isActive = true
+    }
+
+}
+extension SupportVC: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellSupport") as! cellSupport
-        cell.textLabel?.text = "test"
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellSupport", for: indexPath) as! cellSupport
+        cell.textLabel?.text = "NamIT"
         cell.accessoryType = .disclosureIndicator
         return cell
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        navigationController?.pushViewController(ChatBoxSupport(), animated: true)
+        let vc = ChatVC()
+        vc.title = "CHAT"
+        navigationController?.pushViewController(vc, animated: true)
+        
     }
+    
 }

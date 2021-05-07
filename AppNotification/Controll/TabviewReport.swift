@@ -17,7 +17,6 @@ class TabviewReport: UIViewController, UIGestureRecognizerDelegate,SFSafariViewC
     deinit {
         print("Huỷ tableviewreport")
     }
-    
     var group = [String](); var idPhieu = [Int]() ; var link = [String]() ; var timeCreate = [String]() ; var titleContent = [String](); var isseen = [String]()
     var jsonpresent: getNotify?
     var Unread = [String]()
@@ -51,6 +50,7 @@ class TabviewReport: UIViewController, UIGestureRecognizerDelegate,SFSafariViewC
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
+    var checkSeSSion: checkSession!
     private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,7 @@ class TabviewReport: UIViewController, UIGestureRecognizerDelegate,SFSafariViewC
         layer.endPoint = CGPoint(x: 1, y: 1)
         view.layer.insertSublayer(layer, at: 0)
 //        view.backgroundColor = UIColor(red: 207.0/255.0, green: 222.0/255.0, blue: 243.0/255.0, alpha: 1.0)
-        addSub(); setLayout(); getNotify()
+        addSub(); setLayout(); getNotify();checkAPI()
         TableView.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         TableView.dataSource = self
         TableView.delegate = self
@@ -89,39 +89,43 @@ class TabviewReport: UIViewController, UIGestureRecognizerDelegate,SFSafariViewC
     }
     @objc func updateData(){
         self.group.removeAll();self.Unread.removeAll();self.idPhieu.removeAll();self.link.removeAll();self.titleContent.removeAll();self.timeCreate.removeAll();self.isseen.removeAll()
-        self.getNotify()
+        self.getNotify();checkAPI()
         self.TableView.reloadData()
         self.refreshControl.endRefreshing()
     }
-
     @objc func tapgestuzer(){
         navigationController?.popToRootViewController(animated: true)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
+//    func checkSession(){
+//        ApiManager.shared.checkSession { [weak self] (_ data) in
+//            guard let strongSelf = self else {return}
+//            strongSelf.checkSeSSion = data
+//        }failure: { (code) in
+//            self.showAlert(alertText: "Lỗi....!!!!!", alertMessage: "Thông Tin Đăng Đã Được Thay Đổi.")
+//        }
+//    }
     func getNotify(){
         ApiManager.shared.getNotify { [weak self] (_ data) in
             guard let strongSelf = self else {return}
             strongSelf.jsonpresent = data
             if strongSelf.jsonpresent?.code == "TBC" && strongSelf.test == "TBC"{
                 strongSelf.idPhieu.append((strongSelf.jsonpresent?.id)!)
-                for i in strongSelf.idPhieu.sorted(by: {$0 > $1}){
-                    strongSelf.group.append((strongSelf.jsonpresent?.title)!)
-                    strongSelf.link.append((strongSelf.jsonpresent?.link)!)
-                    strongSelf.titleContent.append((strongSelf.jsonpresent?.messege)!)
-                    strongSelf.timeCreate.append((strongSelf.jsonpresent?.createdAt)!)
-                    strongSelf.isseen.append((strongSelf.jsonpresent?.isSeen)!)
-                    if strongSelf.jsonpresent?.isSeen == "N"{
-                        strongSelf.Unread.append((strongSelf.jsonpresent?.isSeen)!)
-                    }
+                strongSelf.group.append((strongSelf.jsonpresent?.title)!)
+                strongSelf.link.append((strongSelf.jsonpresent?.link)!)
+                strongSelf.titleContent.append((strongSelf.jsonpresent?.messege)!)
+                strongSelf.timeCreate.append((strongSelf.jsonpresent?.createdAtFormat)!)
+                strongSelf.isseen.append((strongSelf.jsonpresent?.isSeen)!)
+                if strongSelf.jsonpresent?.isSeen == "N"{
+                    strongSelf.Unread.append((strongSelf.jsonpresent?.isSeen)!)
                 }
-
             }
             if strongSelf.jsonpresent?.code == "DK_NP" && strongSelf.test == "DK_NP"{
                 strongSelf.group.append((strongSelf.jsonpresent?.title)!)
                 strongSelf.idPhieu.append((strongSelf.jsonpresent?.id)!)
                 strongSelf.link.append((strongSelf.jsonpresent?.link)!)
                 strongSelf.titleContent.append((strongSelf.jsonpresent?.messege)!)
-                strongSelf.timeCreate.append((strongSelf.jsonpresent?.createdAt)!)
+                strongSelf.timeCreate.append((strongSelf.jsonpresent?.createdAtFormat)!)
                 strongSelf.isseen.append((strongSelf.jsonpresent?.isSeen)!)
                 if strongSelf.jsonpresent?.isSeen == "N"{
                     strongSelf.Unread.append((strongSelf.jsonpresent?.isSeen)!)
@@ -132,7 +136,7 @@ class TabviewReport: UIViewController, UIGestureRecognizerDelegate,SFSafariViewC
                 strongSelf.idPhieu.append((strongSelf.jsonpresent?.id)!)
                 strongSelf.link.append((strongSelf.jsonpresent?.link)!)
                 strongSelf.titleContent.append((strongSelf.jsonpresent?.messege)!)
-                strongSelf.timeCreate.append((strongSelf.jsonpresent?.createdAt)!)
+                strongSelf.timeCreate.append((strongSelf.jsonpresent?.createdAtFormat)!)
                 strongSelf.isseen.append((strongSelf.jsonpresent?.isSeen)!)
                 if strongSelf.jsonpresent?.isSeen == "N"{
                     strongSelf.Unread.append((strongSelf.jsonpresent?.isSeen)!)
@@ -143,7 +147,7 @@ class TabviewReport: UIViewController, UIGestureRecognizerDelegate,SFSafariViewC
                 strongSelf.idPhieu.append((strongSelf.jsonpresent?.id)!)
                 strongSelf.link.append((strongSelf.jsonpresent?.link)!)
                 strongSelf.titleContent.append((strongSelf.jsonpresent?.messege)!)
-                strongSelf.timeCreate.append((strongSelf.jsonpresent?.createdAt)!)
+                strongSelf.timeCreate.append((strongSelf.jsonpresent?.createdAtFormat)!)
                 strongSelf.isseen.append((strongSelf.jsonpresent?.isSeen)!)
                 if strongSelf.jsonpresent?.isSeen == "N"{
                     strongSelf.Unread.append((strongSelf.jsonpresent?.isSeen)!)
@@ -219,7 +223,7 @@ extension TabviewReport: UITableViewDelegate, UITableViewDataSource{
         infoColor.frame = CGRect(x: 0, y: 0, width: (containerView.frame.width) - 10, height: 80)
         infoColor.startPoint = CGPoint(x: 0, y: 1)
         infoColor.endPoint = CGPoint(x: 1, y: 1)
-//        cell.idPhieu.text = "\(idPhieu[indexPath.row])"
+        cell.idPhieu.text = "\(idPhieu[indexPath.row])"
         cell.infoView.layer.insertSublayer(infoColor, at: 0)
         cell.message.text = "\(titleContent[indexPath.row])"
         cell.createAt.text = timeCreate[indexPath.row]
@@ -247,15 +251,14 @@ extension TabviewReport: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let indexPath = tableView.indexPathForSelectedRow
         let urls = link[indexPath!.row]
-        let safari = SFSafariViewController(url: URL(string: urls)!)
-        safari.delegate = self
-        let navi = UINavigationController(rootViewController: safari)
-        navi.modalPresentationStyle = .fullScreen
-        navi.setNavigationBarHidden(true, animated: true)
-        self.present(navi, animated: true, completion: nil)
-
-
-
+        if urls.isValidURL{
+            let safari = SFSafariViewController(url: URL(string: urls)!)
+            safari.delegate = self
+            let navi = UINavigationController(rootViewController: safari)
+            navi.modalPresentationStyle = .fullScreen
+            navi.setNavigationBarHidden(true, animated: true)
+            self.present(navi, animated: true, completion: nil)
+        }
 //        print("urls : ------ \(urls)")
 //        let urlType = ALWebContentType.url(url: URL(string: urls)!)
 //        let webVC = ALWebViewController(content: urlType)
@@ -269,5 +272,16 @@ extension TabviewReport: ALWebViewDelegate{
     }
     func webView(didFinishLoading webVC: ALWebViewController) {
         debugPrint("Finish Loading")
+    }
+}
+extension String{
+    var isValidURL: Bool {
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        if let match = detector.firstMatch(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count)) {
+            // it is a link, if the match covers the whole string
+            return match.range.length == self.utf16.count
+        } else {
+            return false
+        }
     }
 }

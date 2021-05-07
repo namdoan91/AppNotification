@@ -9,12 +9,14 @@ import UIKit
 import Alamofire
 import Kingfisher
 import WebKit
-import JXWebViewController
+import SafariServices
 import SwiftyJSON
 import SVProgressHUD
 import EasyNotificationBadge
+import FirebaseInAppMessaging
 
-class Home: UIViewController, WKNavigationDelegate{
+
+class Home: UIViewController{
     deinit {
         print("Huỷ HomeViewController")
     }
@@ -32,7 +34,6 @@ class Home: UIViewController, WKNavigationDelegate{
     var code = [String]()
     let containerView: UIView = {
         let container = UIView()
-        //        container.backgroundColor = UIColor.white
         container.translatesAutoresizingMaskIntoConstraints = false
         return container
     }()
@@ -57,37 +58,29 @@ class Home: UIViewController, WKNavigationDelegate{
         let stackview = UIStackView()
         stackview.translatesAutoresizingMaskIntoConstraints = false
         stackview.layer.cornerRadius = 15
-        //        stackview.clipsToBounds = true
-        //        stackview.layer.masksToBounds = true
         return stackview
     }()
     let items = ["THÔNG TIN\nCHUNG", "ĐĂNG KÍ\nNGHỈ PHÉP", "ĐĂNG KÍ\nTĂNG CA", "ĐĂNG KÍ\nĐI TRỄ-VỀ SỚM"]
     var groupsTBC = [String]();var groupsNP = [String]();var groupsTC = [String]();var groupsDTVS = [String]()
     var issence = [Int]()
     let collectionview: UICollectionView = {
-        //        let layCV = UICollectionViewFlowLayout()
-        //        layCV.scrollDirection = .vertical
-        //        layCV.estimatedItemSize = CGSize(width: 150 , height: 150)
-        //        //chia khoảng cách trái phải
-        //        layCV.minimumLineSpacing = 10
-        //        // chia khoảng cách trên dưới
-        //        layCV.minimumInteritemSpacing = 10
-        //        let collectionview = UICollectionView(frame: .zero,collectionViewLayout: layCV)
         let collectionview = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
         collectionview.translatesAutoresizingMaskIntoConstraints = false
-        //        collectionview.backgroundColor = UIColor.lightGray
         return collectionview
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,NSAttributedString.Key.font: UIFont(name: "Arial", size: 24)!]
         navigationItem.title = "MVP APP"
+        
         collectionview.dataSource = self
         collectionview.delegate = self
         collectionview.register(CollectionCell.self, forCellWithReuseIdentifier: "CollectionCell")
         colorBackround()
-        addSub();setLayout()
-        checkSession()
+        addSub();setLayout();checkSession()
+        let avatar = UserDefaults.standard.string(forKey: "imageURL") ?? ""
+        let rightMenu = ImageBarButton(withUrl: URL(string: "\(avatar)"))
+        navigationItem.rightBarButtonItem = rightMenu.load()
         getNotify()
         SVProgressHUD.show()
         SVProgressHUD.setForegroundColor(UIColor(red:0.518, green:0.604, blue:1.000, alpha: 1.000))
@@ -102,7 +95,7 @@ class Home: UIViewController, WKNavigationDelegate{
     //MARK: --REACTIVE VIEWDIDLOAD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        checkSession()
+        navigationController?.setNavigationBarHidden(false, animated: true)
         buttonReload.addTarget(self, action: #selector(tapReload), for: .touchUpInside)
     }
     func colorBackround(){
@@ -120,7 +113,7 @@ class Home: UIViewController, WKNavigationDelegate{
         sourceRound.removeAll();id.removeAll();linkUrl.removeAll();is_seen.removeAll();content.removeAll();timer.removeAll();code.removeAll();groupsTBC.removeAll();groupsNP.removeAll();groupsTC.removeAll();groupsDTVS.removeAll()
         SVProgressHUD.show(withStatus: "Reloading data.......")
         SVProgressHUD.showSuccess(withStatus: "Reloading Dữ Liệu Thành Công.!!!!")
-        getNotify()
+        getNotify();checkSession()
     }
     func addSub(){
         view.addSubview(containerView)
@@ -207,7 +200,7 @@ class Home: UIViewController, WKNavigationDelegate{
     }
 }
 //MARK: --SHOW THÔNG TIN LÊN COLLECTIONVIEW
-extension Home: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+extension Home: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SFSafariViewControllerDelegate{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 1.0, left: 1.0, bottom: 1.0, right: 1.0)
     }
@@ -236,7 +229,6 @@ extension Home: UICollectionViewDataSource, UICollectionViewDelegate, UICollecti
         BadgeApp.distanceFromCenterX = 66
         BadgeApp.distanceFromCenterY = -58
         BadgeApp.borderWidth = 1
-//        cell.container.badge(text: "Hello", appearance: BadgeApp)
         if indexPath.row == 0{
             cell.container.badge(text: "\(groupsTBC.count)", appearance: BadgeApp)
             cell.image.image = UIImage.init(systemName: "bell")

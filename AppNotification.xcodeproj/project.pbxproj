@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080C22AE2612B5BE00F9F9B1 /* Extension+CheckAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080C22AD2612B5BE00F9F9B1 /* Extension+CheckAPI.swift */; };
+		080C22DF2612F9C800F9F9B1 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080C22DE2612F9C800F9F9B1 /* ChatVC.swift */; };
 		0833B15425905A740094FA9A /* API Manager + changepass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0833B15325905A740094FA9A /* API Manager + changepass.swift */; };
 		0833B15725905BD60094FA9A /* changPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0833B15625905BD60094FA9A /* changPass.swift */; };
 		0833B15C259074AD0094FA9A /* VersionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0833B15B259074AD0094FA9A /* VersionVC.swift */; };
-		0833B15F2590750E0094FA9A /* SupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0833B15E2590750E0094FA9A /* SupportVC.swift */; };
 		0833B1622590754A0094FA9A /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0833B1612590754A0094FA9A /* TermsVC.swift */; };
 		0833B166259076370094FA9A /* UserGuideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0833B165259076370094FA9A /* UserGuideVC.swift */; };
 		08414C0E257A13AA004EE5AA /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08414C0D257A13AA004EE5AA /* ProfileVC.swift */; };
@@ -44,13 +45,15 @@
 		088A2C50257E299300FB3EE3 /* ChangPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */; };
 		089751D72579258D00F5CD4D /* checkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089751D62579258D00F5CD4D /* checkSession.swift */; };
 		089D248B25ABF1A70085EA6D /* HomeProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D248A25ABF1A70085EA6D /* HomeProfileVC.swift */; };
+		08B43F5F26117B2A007008CF /* SupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B43F5E26117B2A007008CF /* SupportVC.swift */; };
 		08B8FB4325F9DA02004555BF /* TabviewReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B8FB4225F9DA02004555BF /* TabviewReport.swift */; };
-		08B8FB4925F9EB50004555BF /* Celltableviewreport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B8FB4825F9EB50004555BF /* Celltableviewreport.swift */; };
 		08BE605F2605B1A00084F4D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 08BE605E2605B1A00084F4D8 /* GoogleService-Info.plist */; };
+		08D3DB6A2611A75700BE7198 /* Setting+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3DB692611A75700BE7198 /* Setting+UserDefaults.swift */; };
+		08D3DB772611AA0D00BE7198 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3DB762611AA0D00BE7198 /* UIColor+Extensions.swift */; };
+		08D3DB852611B01900BE7198 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D3DB842611B01900BE7198 /* UIViewController+Extensions.swift */; };
 		08D59C3F25898B2100BE5168 /* Cell Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C3E25898B2100BE5168 /* Cell Profile.swift */; };
 		08D59C422589BC1F00BE5168 /* cellPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C412589BC1F00BE5168 /* cellPassword.swift */; };
 		08D59C4D2589E16400BE5168 /* ProfileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D59C4C2589E16400BE5168 /* ProfileName.swift */; };
-		08F75A882599808A0096A9A4 /* ChatBoxSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F75A872599808A0096A9A4 /* ChatBoxSupport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,10 +71,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		080C22AD2612B5BE00F9F9B1 /* Extension+CheckAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CheckAPI.swift"; sourceTree = "<group>"; };
+		080C22DE2612F9C800F9F9B1 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		0833B15325905A740094FA9A /* API Manager + changepass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Manager + changepass.swift"; sourceTree = "<group>"; };
 		0833B15625905BD60094FA9A /* changPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changPass.swift; sourceTree = "<group>"; };
 		0833B15B259074AD0094FA9A /* VersionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionVC.swift; sourceTree = "<group>"; };
-		0833B15E2590750E0094FA9A /* SupportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportVC.swift; sourceTree = "<group>"; };
 		0833B1612590754A0094FA9A /* TermsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsVC.swift; sourceTree = "<group>"; };
 		0833B165259076370094FA9A /* UserGuideVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGuideVC.swift; sourceTree = "<group>"; };
 		08414C0D257A13AA004EE5AA /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -105,13 +109,15 @@
 		088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangPassVC.swift; sourceTree = "<group>"; };
 		089751D62579258D00F5CD4D /* checkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkSession.swift; sourceTree = "<group>"; };
 		089D248A25ABF1A70085EA6D /* HomeProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileVC.swift; sourceTree = "<group>"; };
+		08B43F5E26117B2A007008CF /* SupportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportVC.swift; sourceTree = "<group>"; };
 		08B8FB4225F9DA02004555BF /* TabviewReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabviewReport.swift; sourceTree = "<group>"; };
-		08B8FB4825F9EB50004555BF /* Celltableviewreport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Celltableviewreport.swift; sourceTree = "<group>"; };
 		08BE605E2605B1A00084F4D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		08D3DB692611A75700BE7198 /* Setting+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Setting+UserDefaults.swift"; sourceTree = "<group>"; };
+		08D3DB762611AA0D00BE7198 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		08D3DB842611B01900BE7198 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		08D59C3E25898B2100BE5168 /* Cell Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell Profile.swift"; sourceTree = "<group>"; };
 		08D59C412589BC1F00BE5168 /* cellPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cellPassword.swift; sourceTree = "<group>"; };
 		08D59C4C2589E16400BE5168 /* ProfileName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileName.swift; sourceTree = "<group>"; };
-		08F75A872599808A0096A9A4 /* ChatBoxSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBoxSupport.swift; sourceTree = "<group>"; };
 		132E53CFF298E8A3B041C2CD /* Pods-AppNotification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppNotification.release.xcconfig"; path = "Target Support Files/Pods-AppNotification/Pods-AppNotification.release.xcconfig"; sourceTree = "<group>"; };
 		2E944568B727FE57801F9FF9 /* Pods-AppNotification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppNotification.debug.xcconfig"; path = "Target Support Files/Pods-AppNotification/Pods-AppNotification.debug.xcconfig"; sourceTree = "<group>"; };
 		F1B8A9DF71CB4B249EC2D7BD /* Pods_AppNotification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppNotification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				08414C0D257A13AA004EE5AA /* ProfileVC.swift */,
-				08ED711F25C55B5500004031 /* Collection View */,
 				08F75A8525997FB30096A9A4 /* SupportVController */,
 				088A2C4F257E299300FB3EE3 /* ChangPassVC.swift */,
 				08D59C4C2589E16400BE5168 /* ProfileName.swift */,
@@ -197,7 +202,6 @@
 				08D59C412589BC1F00BE5168 /* cellPassword.swift */,
 				08465F7825B58712006CEE44 /* CollectionCell.swift */,
 				08465F7A25B587DB006CEE44 /* cellSupport.swift */,
-				08B8FB4825F9EB50004555BF /* Celltableviewreport.swift */,
 				088312F225FF14A8005AC11B /* TableViewCell.swift */,
 			);
 			path = Model;
@@ -231,11 +235,15 @@
 		085423F92578A10700B45DF1 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				085423FB2578A15600B45DF1 /* Extension + UIImage.swift */,
+				08D3DB842611B01900BE7198 /* UIViewController+Extensions.swift */,
+				08D3DB762611AA0D00BE7198 /* UIColor+Extensions.swift */,
 				085424082578BFCE00B45DF1 /* UIAlert.swift */,
 				088A2C45257DD5CC00FB3EE3 /* UIBarImageView.swift */,
 				0885C49925820DE300DD8FBA /* Extension + UIImageView.swift */,
 				084E354F2596D19F0017362D /* getFormattedDate.swift */,
+				08D3DB692611A75700BE7198 /* Setting+UserDefaults.swift */,
+				080C22AD2612B5BE00F9F9B1 /* Extension+CheckAPI.swift */,
+				085423FB2578A15600B45DF1 /* Extension + UIImage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -253,18 +261,11 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		08ED711F25C55B5500004031 /* Collection View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Collection View";
-			sourceTree = "<group>";
-		};
 		08F75A8525997FB30096A9A4 /* SupportVController */ = {
 			isa = PBXGroup;
 			children = (
-				0833B15E2590750E0094FA9A /* SupportVC.swift */,
-				08F75A872599808A0096A9A4 /* ChatBoxSupport.swift */,
+				08B43F5E26117B2A007008CF /* SupportVC.swift */,
+				080C22DE2612F9C800F9F9B1 /* ChatVC.swift */,
 			);
 			path = SupportVController;
 			sourceTree = "<group>";
@@ -403,14 +404,15 @@
 			files = (
 				088312F325FF14A8005AC11B /* TableViewCell.swift in Sources */,
 				08D59C4D2589E16400BE5168 /* ProfileName.swift in Sources */,
-				08B8FB4925F9EB50004555BF /* Celltableviewreport.swift in Sources */,
 				085424202578C73400B45DF1 /* HomeVC.swift in Sources */,
+				08B43F5F26117B2A007008CF /* SupportVC.swift in Sources */,
 				0833B15425905A740094FA9A /* API Manager + changepass.swift in Sources */,
 				0833B166259076370094FA9A /* UserGuideVC.swift in Sources */,
 				0885C4932581F3A700DD8FBA /* cell.swift in Sources */,
 				089751D72579258D00F5CD4D /* checkSession.swift in Sources */,
 				0833B15C259074AD0094FA9A /* VersionVC.swift in Sources */,
 				0854241A2578C45200B45DF1 /* API Manager.swift in Sources */,
+				08D3DB852611B01900BE7198 /* UIViewController+Extensions.swift in Sources */,
 				08414C0E257A13AA004EE5AA /* ProfileVC.swift in Sources */,
 				0833B1622590754A0094FA9A /* TermsVC.swift in Sources */,
 				08465F7925B58712006CEE44 /* CollectionCell.swift in Sources */,
@@ -418,19 +420,21 @@
 				0885C48B2581C76200DD8FBA /* getNotify.swift in Sources */,
 				0854241D2578C5BF00B45DF1 /* UserData.swift in Sources */,
 				088A2C46257DD5CC00FB3EE3 /* UIBarImageView.swift in Sources */,
-				0833B15F2590750E0094FA9A /* SupportVC.swift in Sources */,
 				0885C4882581C69200DD8FBA /* API Manager + getNotify.swift in Sources */,
 				089D248B25ABF1A70085EA6D /* HomeProfileVC.swift in Sources */,
+				08D3DB772611AA0D00BE7198 /* UIColor+Extensions.swift in Sources */,
 				08415CC525830ED300FBF733 /* API Manager + login.swift in Sources */,
+				08D3DB6A2611A75700BE7198 /* Setting+UserDefaults.swift in Sources */,
 				085423D625789F3B00B45DF1 /* AppDelegate.swift in Sources */,
+				080C22AE2612B5BE00F9F9B1 /* Extension+CheckAPI.swift in Sources */,
 				085423FC2578A15600B45DF1 /* Extension + UIImage.swift in Sources */,
+				080C22DF2612F9C800F9F9B1 /* ChatVC.swift in Sources */,
 				08465F7B25B587DB006CEE44 /* cellSupport.swift in Sources */,
 				08D59C422589BC1F00BE5168 /* cellPassword.swift in Sources */,
 				0885C49A25820DE300DD8FBA /* Extension + UIImageView.swift in Sources */,
 				08D59C3F25898B2100BE5168 /* Cell Profile.swift in Sources */,
 				0833B15725905BD60094FA9A /* changPass.swift in Sources */,
 				0885C48F2581C86F00DD8FBA /* APINameManager.swift in Sources */,
-				08F75A882599808A0096A9A4 /* ChatBoxSupport.swift in Sources */,
 				088A0FB025B158C100874F26 /* Home.swift in Sources */,
 				085423EE2578A02500B45DF1 /* LoginVC.swift in Sources */,
 				085424092578BFCE00B45DF1 /* UIAlert.swift in Sources */,

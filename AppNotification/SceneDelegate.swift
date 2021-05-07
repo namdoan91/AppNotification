@@ -20,13 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, MessagingDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
         AppDelegate.shared.window = window
-     
 //        let tabBC = UITabBarController()
         let success = setupController()
         let sessionKey = UserDefaults.standard.string(forKey: "session_key") ?? ""
-        
         print("lưu sessionkey ở scendelegate: \(sessionKey)")
-
         if !sessionKey.isEmpty{
             window?.rootViewController = success
         }else{

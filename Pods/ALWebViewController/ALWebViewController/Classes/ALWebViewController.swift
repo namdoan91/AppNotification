@@ -13,7 +13,7 @@ public enum ALWebContentType {
     case html(html: String)
 }
 
-public protocol ALWebViewDelegate: class {
+public protocol ALWebViewDelegate: AnyObject {
     func webView(didStartLoading webVC: ALWebViewController)
     func webView(didFinishLoading webVC: ALWebViewController)
     func webView(_ webVC: ALWebViewController, didFailWithError error: Error)

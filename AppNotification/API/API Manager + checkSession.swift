@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import FirebaseMessaging
 
 extension ApiManager{
     func checkSession(success: @escaping (checkSession?) -> Void, failure: @escaping (String) -> Void){
@@ -20,10 +21,15 @@ extension ApiManager{
                 let json = JSON(object)
                 if json["CODE"].stringValue == "SUCCESS"{
                     let data = AppNotification.checkSession(json: json["userData"])
+                    let msnv = json["userData"]["username"].stringValue
+                    UserDefaults.standard.setValue(msnv, forKey: "msnv")
                     success(data)
                 }else{
                     let message = json["CODE"].stringValue
                     failure(message)
+                    let username = UserDefaults.standard.string(forKey: "username") ?? ""
+                    Messaging.messaging().unsubscribe(fromTopic: "\(username)")
+                    Messaging.messaging().unsubscribe(fromTopic: "ALL")
                     DispatchQueue.main.async{
                         UserDefaults.standard.removeObject(forKey: "session_key")
                         let loginVC = LoginVC()

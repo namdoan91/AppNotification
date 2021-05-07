@@ -19,4 +19,6 @@ target 'AppNotification' do
 	pod 'Firebase/Messaging'
 	pod 'SDWebImage'
 	pod 'EasyNotificationBadge'
+	pod 'Firebase/InAppMessaging'
+	
 end

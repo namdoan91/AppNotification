@@ -75,7 +75,7 @@ class HomeProfileVC: UIViewController,WKNavigationDelegate, MessagingDelegate {
     let groups = ["SignInOut", "Support"]
     let items = [
         ["Đổi mật khẩu", "Đăng xuất"],
-        ["Chính sách và Điều khoản", "Hướng dẫn sử dụng" ,"Hỗ trợ", "Đóng góp ý kiến", "Phiên bản"]
+        ["Chính sách và Điều khoản", "Hướng dẫn sử dụng" , "Phiên bản"]
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -233,20 +233,6 @@ extension HomeProfileVC: UITableViewDelegate, UITableViewDataSource{
                 layer.colors = [UIColor(red: 1, green: 0.725, blue: 0.200, alpha: 1).cgColor, UIColor(red: 0.976, green: 0.408, blue: 0.114, alpha: 1).cgColor]
                 cell1.viewUI.layer.insertSublayer(layer, at: 0)
                 cell1.containerView.addSubview(seperatorView)
-            }else if indexPath.row == 2{
-                cell1.avatarTitle.image = UIImage(systemName: "bubble.left.and.bubble.right.fill")
-                cell1.avatarTitle.frame = CGRect(x: 10, y: 15, width: 30, height: 20)
-                cell1.avatarTitle.tintColor = UIColor.white
-                layer.colors = [UIColor(red: 0.525, green: 1, blue: 0.608, alpha: 1).cgColor,UIColor(red: 0.012, green: 0.714, blue: 0.129, alpha: 1).cgColor]
-                cell1.viewUI.layer.insertSublayer(layer, at: 3)
-                cell1.containerView.addSubview(seperatorView)
-            }else if indexPath.row == 3{
-                cell1.avatarTitle.image = UIImage(systemName: "envelope.fill")
-                cell1.avatarTitle.frame = CGRect(x: 10, y: 15, width: 30, height: 20)
-                cell1.avatarTitle.tintColor = UIColor.white
-                layer.colors = [UIColor(red: 0.114, green: 0.455, blue: 0.949, alpha: 1).cgColor, UIColor(red: 0.102, green: 0.753, blue: 0.980, alpha: 1).cgColor]
-                cell1.viewUI.layer.insertSublayer(layer, at: 3)
-                cell1.containerView.addSubview(seperatorView)
             }else{
                 cell1.avatarTitle.image = UIImage(systemName: "info.circle.fill")
                 cell1.avatarTitle.tintColor = UIColor.white
@@ -285,10 +271,6 @@ extension HomeProfileVC: UITableViewDelegate, UITableViewDataSource{
         }else if indexPath.row == 1{
             navigationController?.pushViewController(UserGuideVC(), animated: true)
         }else if indexPath.row == 2{
-            navigationController?.pushViewController(SupportVC(), animated: true)
-        }else if indexPath.row == 3{
-            navigationController?.pushViewController(SupportVC(), animated: true)
-        }else if indexPath.row == 4{
             navigationController?.pushViewController(VersionVC(), animated: true)
         }else{
             return

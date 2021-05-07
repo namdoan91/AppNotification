@@ -122,7 +122,6 @@ class LoginVC: UIViewController {
     var getNotification: getNotify?
     var is_seen = [String]()
     var isseen = [String]()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor?.color(UIColor())
@@ -253,14 +252,12 @@ class LoginVC: UIViewController {
             let tabBC = UITabBarController()
             let home = UINavigationController(rootViewController: Home())
             home.tabBarItem = UITabBarItem(title: "Trang Chủ", image: UIImage(systemName: "house.fill"), tag: 0)
-            
             let homeprofile = UINavigationController(rootViewController: HomeProfileVC())
             homeprofile.tabBarItem = UITabBarItem(title: "Cài Đặt", image: UIImage(systemName: "gear"), tag: 1)
             tabBC.setViewControllers([home, homeprofile], animated: true)
             tabBC.modalPresentationStyle = .fullScreen
             tabBC.tabBar.barTintColor = .white
             strongSelf.present(tabBC, animated: true)
-            
         } failure: { (msg) in
             self.showAlert(alertText: "--**Lỗi**--", alertMessage: "Lỗi Đăng Nhập. \n Vui Lòng Thử Lại!")
         }
