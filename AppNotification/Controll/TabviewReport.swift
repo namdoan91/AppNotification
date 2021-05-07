@@ -11,6 +11,7 @@ import JXWebViewController
 import ALWebViewController
 import SafariServices
 import Alamofire
+import NotificationBannerSwift
 
 class TabviewReport: UIViewController, UIGestureRecognizerDelegate,SFSafariViewControllerDelegate{
     
@@ -186,6 +187,7 @@ class TabviewReport: UIViewController, UIGestureRecognizerDelegate,SFSafariViewC
         TableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0).isActive = true
         TableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20).isActive = true
     }
+
 }
 extension TabviewReport: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -266,22 +268,32 @@ extension TabviewReport: UITableViewDelegate, UITableViewDataSource{
 //        navigationController?.pushViewController(webVC, animated: true)
     }
 }
-extension TabviewReport: ALWebViewDelegate{
-    func webView(didStartLoading webVC: ALWebViewController) {
-        debugPrint("Start Loading")
-    }
-    func webView(didFinishLoading webVC: ALWebViewController) {
-        debugPrint("Finish Loading")
-    }
-}
-extension String{
+//extension TabviewReport: ALWebViewDelegate{
+//    func webView(didStartLoading webVC: ALWebViewController) {
+//        debugPrint("Start Loading")
+//    }
+//    func webView(didFinishLoading webVC: ALWebViewController) {
+//        debugPrint("Finish Loading")
+//    }
+//}
+
+extension String {
     var isValidURL: Bool {
         let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
         if let match = detector.firstMatch(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count)) {
             // it is a link, if the match covers the whole string
             return match.range.length == self.utf16.count
         } else {
+            let rightView = UIImageView(image: UIImage.init(systemName: "exclamationmark.triangle.fill"))
+            rightView.tintColor = .white
+            let banner = GrowingNotificationBanner(title: "Lỗi!!!!!!", subtitle: "Link Truy Cập Không Hợp Lệ!!!!!!!!", rightView: rightView, style: .danger)
+            banner.show()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                banner.dismiss()
+            }
             return false
         }
     }
+    
 }
+

@@ -184,16 +184,16 @@ class ProfileName: UIViewController {
         navigationController!.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.backgroundColor = .clear
-//        view.backgroundColor = .white
+        //view.backgroundColor = .blue.withAlphaComponent(0.7)
         navigationItem.title = "Thông Tin Tài Khoản"
-        let layer = CAGradientLayer()
-        layer.colors = [UIColor(red: 0.21, green: 0.82, blue: 0.86, alpha: 1.00).cgColor,
-                        UIColor(red: 0.36, green: 0.53, blue: 0.90, alpha: 1.00).cgColor]
-        layer.frame = stackview.bounds
-        layer.startPoint = CGPoint(x: 0, y: 1)
-        layer.endPoint = CGPoint(x: 1, y: 1)
-        stackview.layer.insertSublayer(layer, at: 0)
-//        view.backgroundColor = .clear
+        // MARK: màu cho stackview
+//        let layer = CAGradientLayer()
+//        layer.colors = [UIColor(red: 0.21, green: 0.82, blue: 0.86, alpha: 1.00).cgColor,
+//                        UIColor(red: 0.36, green: 0.53, blue: 0.90, alpha: 1.00).cgColor]
+//        layer.frame = stackview.bounds
+//        layer.startPoint = CGPoint(x: 0, y: 1)
+//        layer.endPoint = CGPoint(x: 1, y: 1)
+//        stackview.layer.insertSublayer(layer, at: 0)
         addsub();setLayout()
         DispatchQueue.main.async {
             self.checkSession()

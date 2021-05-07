@@ -96,6 +96,7 @@ class Home: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(false, animated: true)
+        sourceRound.removeAll();id.removeAll();linkUrl.removeAll();is_seen.removeAll();content.removeAll();timer.removeAll();code.removeAll();groupsTBC.removeAll();groupsNP.removeAll();groupsTC.removeAll();groupsDTVS.removeAll()
         buttonReload.addTarget(self, action: #selector(tapReload), for: .touchUpInside)
     }
     func colorBackround(){

@@ -34,13 +34,12 @@ class CollectionCell: UICollectionViewCell{
         let badge = UILabel()
         badge.translatesAutoresizingMaskIntoConstraints = false
         badge.textAlignment = .center
-        badge.text = ""
+        badge.text = "0"
         badge.backgroundColor = .red
         badge.textColor = .white
         badge.font = UIFont.boldSystemFont(ofSize: 15)
         badge.layer.cornerRadius = 5
         badge.clipsToBounds = true
-//        badge.numberOfLines = 1
         badge.preferredMaxLayoutWidth = 150
         badge.minimumScaleFactor = 0.5
         badge.sizeToFit()

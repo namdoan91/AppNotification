@@ -20,5 +20,5 @@ target 'AppNotification' do
 	pod 'SDWebImage'
 	pod 'EasyNotificationBadge'
 	pod 'Firebase/InAppMessaging'
-	
+	pod 'NotificationBannerSwift'	
 end

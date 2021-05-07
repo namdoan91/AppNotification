@@ -90,6 +90,7 @@ PODS:
   - InputBarAccessoryView/Core (5.3.1)
   - JXWebViewController (1.3.0)
   - Kingfisher (6.2.1)
+  - MarqueeLabel (4.0.5)
   - MessageKit (3.6.0):
     - InputBarAccessoryView (~> 5.3.1)
   - nanopb (2.30906.0):
@@ -97,11 +98,15 @@ PODS:
     - nanopb/encode (= 2.30906.0)
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
+  - NotificationBannerSwift (3.0.6):
+    - MarqueeLabel (~> 4.0.5)
+    - SnapKit (~> 5.0.1)
   - PromisesObjC (1.2.12)
   - SDWebImage (5.11.0):
     - SDWebImage/Core (= 5.11.0)
   - SDWebImage/Core (5.11.0)
   - SkyFloatingLabelTextField (4.0.0)
+  - SnapKit (5.0.1)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (5.0.1)
   - TextFieldEffects (1.6.0)
@@ -116,6 +121,7 @@ DEPENDENCIES:
   - JXWebViewController
   - Kingfisher
   - MessageKit
+  - NotificationBannerSwift
   - SDWebImage
   - SkyFloatingLabelTextField
   - SVProgressHUD
@@ -142,11 +148,14 @@ SPEC REPOS:
     - InputBarAccessoryView
     - JXWebViewController
     - Kingfisher
+    - MarqueeLabel
     - MessageKit
     - nanopb
+    - NotificationBannerSwift
     - PromisesObjC
     - SDWebImage
     - SkyFloatingLabelTextField
+    - SnapKit
     - SVProgressHUD
     - SwiftyJSON
     - TextFieldEffects
@@ -170,15 +179,18 @@ SPEC CHECKSUMS:
   InputBarAccessoryView: 1f75d8c9f75e5e57f3ffac36ed58635a8005e0bc
   JXWebViewController: 03b2eb44176270b79ff115eda1a64496963ab4e2
   Kingfisher: e71c6fac2aebb1262888cabc2cb13d313362a48f
+  MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
   MessageKit: a8efaf55b021672b19ffdd5a85ce1c2f3b53058e
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
+  NotificationBannerSwift: 7021be2338f8f29cf424b0aca43da462bf9e2a1a
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: 7acbb57630ac7db4a495547fb73916ff3e432f6b
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: 8b78a4e603b8c7ce8a9cfa64ed6e2eedd53a353e
+PODFILE CHECKSUM: 4249274bd1f0a47f611b200fd3c6838abf485251
 
 COCOAPODS: 1.10.1
